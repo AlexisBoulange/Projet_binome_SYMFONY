@@ -34,9 +34,15 @@ class Categorie
      */
     private $modules;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="categories")
+     */
+    private $users;
+
     public function __construct()
     {
         $this->modules = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,6 +100,30 @@ class Categorie
                 $module->setCategorie(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        $this->users->removeElement($user);
 
         return $this;
     }
