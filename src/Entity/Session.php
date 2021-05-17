@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SessionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,6 +39,16 @@ class Session
      * @ORM\JoinColumn(nullable=false)
      */
     private $formation;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Stagiaire::class, inversedBy="sessions")
+     */
+    private $stagiaire;
+
+    public function __construct()
+    {
+        $this->stagiaire = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -87,6 +99,30 @@ class Session
     public function setFormation(?Formation $formation): self
     {
         $this->formation = $formation;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Stagiaire[]
+     */
+    public function getStagiaire(): Collection
+    {
+        return $this->stagiaire;
+    }
+
+    public function addStagiaire(Stagiaire $stagiaire): self
+    {
+        if (!$this->stagiaire->contains($stagiaire)) {
+            $this->stagiaire[] = $stagiaire;
+        }
+
+        return $this;
+    }
+
+    public function removeStagiaire(Stagiaire $stagiaire): self
+    {
+        $this->stagiaire->removeElement($stagiaire);
 
         return $this;
     }
