@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ModuleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,6 +34,16 @@ class Module
      * @ORM\JoinColumn(nullable=false)
      */
     private $categorie;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Programmer::class, mappedBy="modules", orphanRemoval=true)
+     */
+    private $programmers;
+
+    public function __construct()
+    {
+        $this->programmers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -70,6 +82,36 @@ class Module
     public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Programmer[]
+     */
+    public function getProgrammers(): Collection
+    {
+        return $this->programmers;
+    }
+
+    public function addProgrammer(Programmer $programmer): self
+    {
+        if (!$this->programmers->contains($programmer)) {
+            $this->programmers[] = $programmer;
+            $programmer->setModules($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProgrammer(Programmer $programmer): self
+    {
+        if ($this->programmers->removeElement($programmer)) {
+            // set the owning side to null (unless already changed)
+            if ($programmer->getModules() === $this) {
+                $programmer->setModules(null);
+            }
+        }
 
         return $this;
     }

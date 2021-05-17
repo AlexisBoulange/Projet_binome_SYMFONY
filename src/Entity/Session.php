@@ -45,9 +45,15 @@ class Session
      */
     private $stagiaire;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Programmer::class, mappedBy="sessions", orphanRemoval=true)
+     */
+    private $programmers;
+
     public function __construct()
     {
         $this->stagiaire = new ArrayCollection();
+        $this->programmers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -123,6 +129,36 @@ class Session
     public function removeStagiaire(Stagiaire $stagiaire): self
     {
         $this->stagiaire->removeElement($stagiaire);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Programmer[]
+     */
+    public function getProgrammers(): Collection
+    {
+        return $this->programmers;
+    }
+
+    public function addProgrammer(Programmer $programmer): self
+    {
+        if (!$this->programmers->contains($programmer)) {
+            $this->programmers[] = $programmer;
+            $programmer->setSessions($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProgrammer(Programmer $programmer): self
+    {
+        if ($this->programmers->removeElement($programmer)) {
+            // set the owning side to null (unless already changed)
+            if ($programmer->getSessions() === $this) {
+                $programmer->setSessions(null);
+            }
+        }
 
         return $this;
     }
