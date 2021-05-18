@@ -54,6 +54,19 @@ class SessionController extends AbstractController
             'formAddsession' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/delete/{id}", name="session_delete")
+     */
+    public function delete(Session $session): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($session);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('session');
+    }
+
     /**
      * @Route("/{id}", name="session_show")
      */

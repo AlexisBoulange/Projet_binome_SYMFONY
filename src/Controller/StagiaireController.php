@@ -55,6 +55,19 @@ class StagiaireController extends AbstractController
             'formAddstagiaire' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/delete/{id}", name="stagiaire_delete")
+     */
+    public function delete(Stagiaire $stagiaire): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($stagiaire);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('stagiaire');
+    }
+
     /**
      * @Route("/{id}", name="stagiaire_show")
      */

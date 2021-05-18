@@ -54,6 +54,19 @@ class FormationController extends AbstractController
             'formAddFormation' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/delete/{id}", name="formation_delete")
+     */
+    public function delete(Formation $formation): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($formation);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('formation');
+    }
+
     /**
      * @Route("/{id}", name="formation_show")
      */
