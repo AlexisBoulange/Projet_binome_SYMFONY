@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class FormationController extends AbstractController
 {
         /**
-     * @Route("/", name="formation")
+     * @Route("/", name="formation_index")
      */
     public function index(): Response
     {

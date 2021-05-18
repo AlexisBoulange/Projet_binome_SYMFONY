@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/", name="user")
+     * @Route("/", name="user_index")
      */
     public function index(): Response
     {

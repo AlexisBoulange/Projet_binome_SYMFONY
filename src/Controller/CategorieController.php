@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CategorieController extends AbstractController
 {
     /**
-     * @Route("/", name="categorie")
+     * @Route("/", name="categorie_index")
      */
     public function index(): Response
     {

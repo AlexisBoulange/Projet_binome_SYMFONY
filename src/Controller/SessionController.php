@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class SessionController extends AbstractController
 {
     /**
-     * @Route("/", name="session")
+     * @Route("/", name="session_index")
      */
     public function index(): Response
     {

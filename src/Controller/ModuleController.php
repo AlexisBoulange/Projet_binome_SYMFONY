@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ModuleController extends AbstractController
 {
     /**
-     * @Route("/", name="module")
+     * @Route("/", name="module_index")
      */
     public function index(): Response
     {
