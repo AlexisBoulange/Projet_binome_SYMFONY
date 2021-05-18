@@ -15,7 +15,7 @@
         </thead>
             {% for stagiaire in stagiaires %}
                <tr> 
-                  <td><a href="{{ path('stagiaire_show') }}">{{ stagiaire.nom ~ ' ' ~ stagiaire.prenom }}</a></td>
+                  <td><a href="{{ path('stagiaire_show', {id:stagiaire.id}) }}">{{ stagiaire.nom ~ ' ' ~ stagiaire.prenom }}</a></td>
                   <td>{{ stagiaire.sexe }}</td>
                   <td>{{ stagiaire.dateNaissance | date('d/m/Y') }}</td>
                   <td>{{ stagiaire.ville }}</td>
