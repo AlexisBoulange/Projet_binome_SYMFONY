@@ -5,8 +5,7 @@
     <table class="uk-table uk-table-striped uk-table-responsive">
         <thead>
             <tr>
-               <th>Prénom</th>
-               <th>Nom</th>
+               <th>Nom/Prénom</th>
                <th>Sexe<th>
                <th>Date de naissance</th>
                <th>Ville</th>
@@ -16,8 +15,7 @@
         </thead>
             {% for stagiaire in stagiaires %}
                <tr> 
-                  <td>{{ stagiaire.prenom }}</td>
-                  <td>{{ stagiaire.nom }}</td>
+                  <td><a href="{{ path('stagiaire_show') }}">{{ stagiaire.nom ~ ' ' ~ stagiaire.prenom }}</a></td>
                   <td>{{ stagiaire.sexe }}</td>
                   <td>{{ stagiaire.dateNaissance | date('d/m/Y') }}</td>
                   <td>{{ stagiaire.ville }}</td>
