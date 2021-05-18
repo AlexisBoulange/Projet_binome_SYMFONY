@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class StagiaireController extends AbstractController
 {
     /**
-     * @Route("/", name="stagiaire")
+     * @Route("/", name="stagiaire_index")
      */
     public function index(): Response
     {
