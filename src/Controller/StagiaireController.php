@@ -71,10 +71,10 @@ class StagiaireController extends AbstractController
     /**
      * @Route("/{id}", name="stagiaire_show")
      */
-    public function show(): Response
+    public function show(Stagiaire $stagiaire): Response
     {
         return $this->render('stagiaire/show.html.twig', [
-            'stagiaire' => 'stagiaire',
+            'stagiaire' => $stagiaire,
         ]);
     }
 }
