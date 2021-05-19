@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class StagiaireType extends AbstractType
 {
@@ -35,6 +36,7 @@ class StagiaireType extends AbstractType
             ])
             ->add('dateNaissance', DateType::class, [
                 'label' => 'Date de naissance',
+                'widget' => 'single_text',
                 'required' => true,
                 'attr' => ['class' => 'uk-input'],
             ])
@@ -58,7 +60,9 @@ class StagiaireType extends AbstractType
                 'multiple' => true,
                 'required' => true,
             ])
-        ;
+            ->add('envoyer', SubmitType::class, [
+                'attr' => ['class' => 'uk-button uk-button-secondary uk-margin-top'],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

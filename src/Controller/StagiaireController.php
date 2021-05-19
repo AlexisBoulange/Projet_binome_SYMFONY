@@ -48,7 +48,7 @@ class StagiaireController extends AbstractController
             $entityManager->persist($stagiaire);
             $entityManager->flush();
 
-            return $this->redirectToRoute('stagiaire');
+            return $this->redirectToRoute('stagiaire_index');
         }
 
         return $this->render('stagiaire/new.html.twig', [
@@ -65,7 +65,7 @@ class StagiaireController extends AbstractController
         $entityManager->remove($stagiaire);
         $entityManager->flush();
 
-        return $this->redirectToRoute('stagiaire');
+        return $this->redirectToRoute('stagiaire_index');
     }
 
     /**

@@ -47,7 +47,7 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('user');
+            return $this->redirectToRoute('user_index');
         }
 
         return $this->render('user/new.html.twig', [
@@ -64,16 +64,16 @@ class UserController extends AbstractController
         $entityManager->remove($user);
         $entityManager->flush();
 
-        return $this->redirectToRoute('user');
+        return $this->redirectToRoute('user_index');
     }
 
     /**
      * @Route("/{id}", name="user_show")
      */
-    public function show(): Response
+    public function show(User $user): Response
     {
         return $this->render('user/show.html.twig', [
-            'user' => 'user',
+            'user' => $user,
         ]);
     }
 }

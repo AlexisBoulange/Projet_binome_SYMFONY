@@ -47,7 +47,7 @@ class ModuleController extends AbstractController
             $entityManager->persist($module);
             $entityManager->flush();
 
-            return $this->redirectToRoute('module');
+            return $this->redirectToRoute('module_index');
         }
 
         return $this->render('module/new.html.twig', [
@@ -64,16 +64,16 @@ class ModuleController extends AbstractController
         $entityManager->remove($module);
         $entityManager->flush();
 
-        return $this->redirectToRoute('module');
+        return $this->redirectToRoute('module_index');
     }
 
     /**
      * @Route("/{id}", name="module_show")
      */
-    public function show(): Response
+    public function show(Module $module): Response
     {
         return $this->render('module/show.html.twig', [
-            'module' => 'module',
+            'module' => $module,
         ]);
     }
 }
