@@ -47,7 +47,7 @@ class CategorieController extends AbstractController
             $entityManager->persist($categorie);
             $entityManager->flush();
 
-            return $this->redirectToRoute('categorie');
+            return $this->redirectToRoute('categorie_index');
         }
 
         return $this->render('categorie/new.html.twig', [
@@ -64,16 +64,16 @@ class CategorieController extends AbstractController
         $entityManager->remove($categorie);
         $entityManager->flush();
 
-        return $this->redirectToRoute('categorie');
+        return $this->redirectToRoute('categorie_index');
     }
 
     /**
      * @Route("/{id}", name="categorie_show")
      */
-    public function show(): Response
+    public function show(Categorie $categorie): Response
     {
         return $this->render('categorie/show.html.twig', [
-            'categorie' => 'categorie',
+            'categorie' => $categorie,
         ]);
     }
 }

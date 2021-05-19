@@ -5,17 +5,34 @@ namespace App\Form;
 use App\Entity\Categorie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class CategorieType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
-            ->add('detail')
-            ->add('users')
-        ;
+            ->add('nom', TextType::class, [
+                'label' => 'Nom',
+                'required' => true,
+            ])
+            ->add('detail', TextareaType::class, [
+                'label' => 'Détail',
+            ])
+            ->add('user', EntityType::class, [
+                'label' => 'Formateur',
+                'class' => User::class,
+                'choice_label' => 'nom',
+                'multiple' => true,
+                'required' => true,
+            ])
+            ->add('envoyer', SubmitType::class, [
+                'attr' => ['class' => 'uk-button uk-button-secondary uk-margin-top'],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

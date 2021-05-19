@@ -47,7 +47,7 @@ class FormationController extends AbstractController
             $entityManager->persist($formation);
             $entityManager->flush();
 
-            return $this->redirectToRoute('formation');
+            return $this->redirectToRoute('formation_index');
         }
 
         return $this->render('formation/new.html.twig', [
@@ -64,16 +64,16 @@ class FormationController extends AbstractController
         $entityManager->remove($formation);
         $entityManager->flush();
 
-        return $this->redirectToRoute('formation');
+        return $this->redirectToRoute('formation_index');
     }
 
     /**
      * @Route("/{id}", name="formation_show")
      */
-    public function show(): Response
+    public function show(Formation $formation): Response
     {
         return $this->render('formation/show.html.twig', [
-            'formation' => 'formation',
+            'formation' => $formation,
         ]);
     }
 }

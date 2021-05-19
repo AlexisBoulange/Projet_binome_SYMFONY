@@ -47,7 +47,7 @@ class SessionController extends AbstractController
             $entityManager->persist($session);
             $entityManager->flush();
 
-            return $this->redirectToRoute('session');
+            return $this->redirectToRoute('session_index');
         }
 
         return $this->render('session/new.html.twig', [
@@ -64,16 +64,16 @@ class SessionController extends AbstractController
         $entityManager->remove($session);
         $entityManager->flush();
 
-        return $this->redirectToRoute('session');
+        return $this->redirectToRoute('session_index');
     }
 
     /**
      * @Route("/{id}", name="session_show")
      */
-    public function show(): Response
+    public function show(Session $session): Response
     {
         return $this->render('session/show.html.twig', [
-            'session' => 'session',
+            'session' => $session,
         ]);
     }
 }
