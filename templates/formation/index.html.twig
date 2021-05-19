@@ -1,8 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello FormationController!{% endblock %}
+{% block title %}Formations{% endblock %}
 
-{% block body %}
-<h1>Bonjour</h1>
-<h2>fedzfz</h2>
+{% block contenu %}
+    <h2>Formations</h2>
+    <table class="uk-table uk-table-divider uk-table-responsive">
+        <thead>
+            <tr>
+               <th>Intitulé</th>
+               <th>Descriptif</th>
+               <th>Sessions disponibles</th>   
+            </tr>
+        </thead>
+            {% for formation in formations %}
+               <tr> 
+                  <td><strong>{{ formation.nom }}</strong></td>
+                  <td>{{ formation.descriptif }}</td>
+                  <td><a href="#">{{ formation.sessions | length }}</a></td>
+                </tr>
+            {% endfor %}
+        <tbody>
+    </table>
 {% endblock %}
+

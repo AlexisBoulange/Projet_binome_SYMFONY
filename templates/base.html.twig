@@ -11,27 +11,25 @@
 			{#{{ encore_entry_link_tags('app') }}#}
 			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.21/dist/css/uikit.min.css" /
 		{% endblock %}
-
-		{% block javascripts %}
-			{#{{ encore_entry_script_tags('app') }}#}
-		{% endblock %}
 	</head>
 	<body class="uk-container uk-margin">
 		{% block body %}
 			<header>
-				<nav class="uk-navbar-container">
-					<ul class"uk-navbar-nav">
-						<li class="uk-active">
-							<a href="{{ path('session_index') }}">Sessions</a>
-						</li>
-						<li class="uk-active">
-							<a href="{{ path('stagiaire_index') }}">Stagiaires</a>
-						</li>
-					</ul>
-				</nav>
+			    <div class="uk-navbar-container">
+				    <nav class="uk-navbar-nav uk-flex-around">
+						<a class="uk-active uk-link-heading"  href="{{ path('formation_index') }}">Formations</a>
+						<a class="uk-active uk-link-heading" href="{{ path('session_index') }}">Sessions</a>
+						<a class="uk-active uk-link-heading" href="{{ path('stagiaire_index') }}">Stagiaires</a>				
+				    </nav>
+				</div>
 			</header>
 			{% block contenu %}{% endblock %}
 		{% endblock %}
-	</body>
+	</body>		
+	{% block javascripts %}
+		{#{{ encore_entry_script_tags('app') }}#}
+		<script src="https://cdn.jsdelivr.net/npm/uikit@3.6.21/dist/js/uikit.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.21/dist/js/uikit-icons.min.js"></script>
+	{% endblock %}
 </html>
 

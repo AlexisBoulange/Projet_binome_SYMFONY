@@ -1,12 +1,13 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Liste des sessions{% endblock %}
 
 {% block contenu %}
     <h2>Sessions disponibles</h2>
-    <table class="uk-table uk-table-striped uk-table-responsive">
+    <table class="uk-table uk-table-divider uk-table-responsive">
         <thead>
             <tr>
-               <th>Nom Session</th>
+               <th>Formation</th>
                <th>Date début</th>
                <th>Date fin</th>
                <th>Nb de places disponibles</th>
@@ -14,7 +15,7 @@
         </thead>
             {% for session in sessions %}
                <tr> 
-                  <td>{{ session.nom }}</td>
+                  <td><a href="{{ path('formation_index', {id: session.formation.id}) }}">{{ session.formation.nom }}</a></td>
                   <td>{{ session.dateD | date('d/m/Y') }}</td>
                   <td>{{ session.dateF | date('d/m/Y') }}</td>
                   <td>{{ session.nbPlaces }}</td>
