@@ -21,22 +21,27 @@ class StagiaireType extends AbstractType
             ->add('nom', TextType::class, [
                 'label' => 'Nom',
                 'required' => true,
+                'attr' => ['class' => 'uk-input'],
             ])
             ->add('prenom', TextType::class, [
                 'label' => 'Prénom',
                 'required' => true,
+                'attr' => ['class' => 'uk-input'],
             ])
             ->add('sexe', TextType::class, [
                 'label' => 'Sexe',
                 'required' => true,
+                'attr' => ['class' => 'uk-input'],
             ])
             ->add('dateNaissance', DateType::class, [
                 'label' => 'Date de naissance',
                 'required' => true,
+                'attr' => ['class' => 'uk-input'],
             ])
             ->add('ville', TextType::class, [
                 'label' => 'Ville',
                 'required' => true,
+                'attr' => ['class' => 'uk-input'],
             ])
             ->add('mail', EmailType::class, [
                 'label' => 'Adresse e-mail',
@@ -50,6 +55,7 @@ class StagiaireType extends AbstractType
                 'label' => 'Session',
                 'class' => Session::class,
                 'choice_label' => 'formation',
+                'multiple' => true,
                 'required' => true,
             ])
         ;
