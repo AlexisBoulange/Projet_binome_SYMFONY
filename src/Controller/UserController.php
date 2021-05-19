@@ -54,6 +54,19 @@ class UserController extends AbstractController
             'formAdduser' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/delete/{id}", name="user_delete")
+     */
+    public function delete(User $user): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('user');
+    }
+
     /**
      * @Route("/{id}", name="user_show")
      */

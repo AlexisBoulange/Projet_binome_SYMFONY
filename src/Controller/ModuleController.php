@@ -54,6 +54,19 @@ class ModuleController extends AbstractController
             'formAddmodule' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/delete/{id}", name="module_delete")
+     */
+    public function delete(Module $module): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($module);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('module');
+    }
+
     /**
      * @Route("/{id}", name="module_show")
      */

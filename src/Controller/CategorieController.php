@@ -54,6 +54,19 @@ class CategorieController extends AbstractController
             'formAddCategorie' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/delete/{id}", name="categorie_delete")
+     */
+    public function delete(Categorie $categorie): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($categorie);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('categorie');
+    }
+
     /**
      * @Route("/{id}", name="categorie_show")
      */
