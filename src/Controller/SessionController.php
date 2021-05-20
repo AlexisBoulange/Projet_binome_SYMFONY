@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Session;
+use App\Form\SessionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
@@ -29,6 +31,7 @@ class SessionController extends AbstractController
     /**
      * @Route("/new", name="session_add")
      * @Route("/edit/{id}", name="session_edit")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request, Session $session = null): Response
     {
@@ -57,6 +60,7 @@ class SessionController extends AbstractController
 
     /**
      * @Route("/delete/{id}", name="session_delete")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Session $session): Response
     {

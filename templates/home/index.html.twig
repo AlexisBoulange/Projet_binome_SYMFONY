@@ -1,14 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bienvenue!{% endblock %}
-
+{% block title %}Hello HomeController!{% endblock %}
 {% block contenu %}
-   <a href="{{ path('app_logout') }}">Logout</a>
-   {% if app.user.admin %}
-   
-   // lien vers le panneau admin
-   <a href="#">Admin</a>
-   %
-   {% endif %}
-   <h1>Bienvenue {{ app.user.pseudo }}</h1>
+<div class="wrapper">
+    {% if is_granted("ROLE_USER") %}
+        <h2>Hello {{ app.user.email }}! ✅</h2>
+    {% else %}
+        <h2>Hello visiteur!</h2>
+    {% endif %}
+</div>
 {% endblock %}
