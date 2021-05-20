@@ -1,20 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block title %}Liste des users{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/laragon/www/ProjetSymfony/src/Controller/UserController.php'|file_link(0) }}">src/Controller/UserController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/laragon/www/ProjetSymfony/templates/user/index.html.twig'|file_link(0) }}">templates/user/index.html.twig</a></code></li>
-    </ul>
-</div>
+{% block contenu %}
+    <h2>Utilisateurs inscrits</h2>
+    <table class="uk-table uk-table-divider uk-table-responsive">
+        <thead>
+            <tr>
+                <th>Nom/Prénom</th>
+                <th>Date d'inscription</th>
+                <th>Mail</th>
+                <th>Roles</th>
+                {% if is_granted("ROLE_ADMIN") %}
+                <th>Modifier/Supprimer</th>
+                {% endif %}
+            </tr>
+        </thead>
+            {% for user in users %}
+                <tr> 
+                    <td><a href="{{ path('user_show', {id: user.id}) }}">{{ user.nom ~ ' ' ~ user.prenom }}</a></td>
+                    <td>{{ user.dateEntree | date('d/m/Y')}}</td>
+                    <td>{{ user.email }}</td>
+                        <td>
+                            {% for role in user.roles %}
+                                {{ role }}</br>
+                            {% endfor %}
+                        </td>
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <td>
+                            <a class="uk-button-small uk-button-primary" href="{{ path('user_edit', {id: user.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
+                            <a class="uk-button-small uk-button-danger" href="{{ path('user_delete', {id: user.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        <tbody>
+    </table>
 {% endblock %}

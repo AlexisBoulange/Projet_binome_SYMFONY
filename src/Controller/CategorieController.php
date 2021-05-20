@@ -6,6 +6,7 @@ use App\Entity\Categorie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
@@ -29,6 +30,7 @@ class CategorieController extends AbstractController
     /**
      * @Route("/new", name="categorie_add")
      * @Route("/edit/{id}", name="categorie_edit")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request, Categorie $categorie = null): Response
     {
@@ -57,6 +59,7 @@ class CategorieController extends AbstractController
 
     /**
      * @Route("/delete/{id}", name="categorie_delete")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Categorie $categorie): Response
     {

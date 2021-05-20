@@ -7,6 +7,7 @@ use App\Form\StagiaireType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
@@ -30,6 +31,7 @@ class StagiaireController extends AbstractController
     /**
      * @Route("/new", name="stagiaire_add")
      * @Route("/edit/{id}", name="stagiaire_edit")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request, Stagiaire $stagiaire = null): Response
     {
@@ -58,6 +60,7 @@ class StagiaireController extends AbstractController
 
     /**
      * @Route("/delete/{id}", name="stagiaire_delete")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Stagiaire $stagiaire): Response
     {

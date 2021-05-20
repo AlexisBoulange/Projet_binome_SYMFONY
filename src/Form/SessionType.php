@@ -44,14 +44,14 @@ class SessionType extends AbstractType
                 'required' => true,
                 'attr' => ['class' => 'uk-input'],
             ])
-            ->add('stagiaire', EntityType::class, [
-                'label' => 'Stagiaire',
-                'class' => User::class,
-                'choice_label' => 'nom',
-                'multiple' => true,
-                'required' => true,
-                'attr' => ['class' => 'uk-input'],
-            ])
+            // ->add('stagiaire', EntityType::class, [
+            //     'label' => 'Stagiaire',
+            //     'class' => User::class,
+            //     'choice_label' => 'nom',
+            //     'multiple' => true,
+            //     'required' => true,
+            //     'attr' => ['class' => 'uk-input'],
+            // ])
             ->add('envoyer', SubmitType::class, [
                 'attr' => ['class' => 'uk-button uk-button-secondary uk-margin-top'],
             ]);
