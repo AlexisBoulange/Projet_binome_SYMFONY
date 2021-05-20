@@ -24,7 +24,7 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="json", nullable=true)
      */
     private $roles = [];
 
@@ -35,12 +35,12 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $prenom;
 
@@ -50,7 +50,7 @@ class User implements UserInterface
     private $avatar;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateEntree;
 
@@ -58,6 +58,11 @@ class User implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $pseudo;
 
     public function getId(): ?int
     {
@@ -104,7 +109,14 @@ class User implements UserInterface
 
         return $this;
     }
-
+    
+    public function hasRoles($role)
+    {
+        return in_array($role, $this->roles);
+    }
+    public function isAdmin()
+    {
+        return in_array("ROLE_ADMIN", $this->roles);
     /**
      * @see UserInterface
      */
@@ -196,6 +208,18 @@ class User implements UserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
 
         return $this;
     }
