@@ -22,16 +22,19 @@ class SessionType extends AbstractType
                 'label' => 'Date de début',
                 'widget' => 'single_text',
                 'required' => true,
+                'attr' => ['class' => 'uk-input'],
             ])
             ->add('dateF', DateType::class, [
                 'label' => 'Date de fin',
                 'widget' => 'single_text',
                 'required' => true,
+                'attr' => ['class' => 'uk-input'],
             ])
             ->add('nbPlaces', NumberType::class, [
                 'label' => 'Nombre de places', 
                 'attr' => ['min' => 1],
                 'html5' => true,
+                'attr' => ['class' => 'uk-input'],
             ])
             ->add('formation', EntityType::class, [
                 'label' => 'Formation',
@@ -39,6 +42,7 @@ class SessionType extends AbstractType
                 'choice_label' => 'nom',
                 'multiple' => true,
                 'required' => true,
+                'attr' => ['class' => 'uk-input'],
             ])
             ->add('stagiaire', EntityType::class, [
                 'label' => 'Stagiaire',
@@ -46,6 +50,7 @@ class SessionType extends AbstractType
                 'choice_label' => 'nom',
                 'multiple' => true,
                 'required' => true,
+                'attr' => ['class' => 'uk-input'],
             ])
             ->add('envoyer', SubmitType::class, [
                 'attr' => ['class' => 'uk-button uk-button-secondary uk-margin-top'],

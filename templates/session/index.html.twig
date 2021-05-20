@@ -7,22 +7,25 @@
     <table class="uk-table uk-table-divider uk-table-responsive">
         <thead>
             <tr>
-               <th>Formation</th>
-               <th>Date début</th>
-               <th>Date fin</th>
-               <th>Nb de places disponibles</th>
+                <th>Formation</th>
+                <th>Date début</th>
+                <th>Date fin</th>
+                <th>Nb de places disponibles</th>
             </tr>
         </thead>
             {% for session in sessions %}
-               <tr> 
-                  <td><a href="{{ path('formation_index', {id: session.formation.id}) }}">{{ session.formation.nom }}</a></td>
-                  <td>{{ session.dateD | date('d/m/Y') }}</td>
-                  <td>{{ session.dateF | date('d/m/Y') }}</td>
-                  <td>{{ session.nbPlaces }}</td>
+                <tr> 
+                    <td><a href="{{ path('formation_index', {id: session.formation.id}) }}">{{ session.formation.nom }}</a></td>
+                    <td>{{ session.dateD | date('d/m/Y') }}</td>
+                    <td>{{ session.dateF | date('d/m/Y') }}</td>
+                    <td>{{ session.nbPlaces }}</td>
                 </tr>
             {% endfor %}
         <tbody>
     </table>
+    {% if is_granted("ROLE_ADMIN") %}
+        <a class=" uk-button uk-button-primary " href="{{ path('session_add') }}"> + Ajouter </a>
+    {% endif %}
 {% endblock %}
 
 

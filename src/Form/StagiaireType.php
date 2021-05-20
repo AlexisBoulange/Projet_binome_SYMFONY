@@ -48,17 +48,21 @@ class StagiaireType extends AbstractType
             ->add('mail', EmailType::class, [
                 'label' => 'Adresse e-mail',
                 'required' => true,
+                'attr' => ['class' => 'uk-input'],
             ])
             ->add('telephone', TelType::class, [
                 'label' => 'Téléphone',
                 'required' => true,
+                'attr' => ['class' => 'uk-input'],
             ])
             ->add('sessions', EntityType::class, [
                 'label' => 'Session',
                 'class' => Session::class,
-                'choice_label' => 'formation',
+                'choice_label' => function($session){
+                    return $session;
+                },
                 'multiple' => true,
-                'required' => true,
+                'attr' => ['class' => 'uk-select'],
             ])
             ->add('envoyer', SubmitType::class, [
                 'attr' => ['class' => 'uk-button uk-button-secondary uk-margin-top'],
