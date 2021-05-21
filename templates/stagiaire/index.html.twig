@@ -11,9 +11,6 @@
                 <th>Ville</th>
                 <th>Mail</th>
                 <th>Sessions</th>
-                {% if is_granted("ROLE_ADMIN") %}
-                <th>Modifier/Supprimer</th>
-                {% endif %}
             </tr>
         </thead>
             {% for stagiaire in stagiaires %}

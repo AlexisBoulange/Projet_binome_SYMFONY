@@ -28,6 +28,7 @@
                     {% endif %}	
 				</div>
 			</header>
+			
 			<div class="uk-navbar-container">
 				    <nav class="uk-navbar-nav uk-flex-around">
 						<a class="uk-active uk-link-heading"  href="{{ path('formation_index') }}">Formations</a>
@@ -44,7 +45,9 @@
 									
 				    </nav>
 				</div>
+					<div class="uk-container">
 			{% block contenu %}{% endblock %}
+					</div>
 			<footer class="uk-flex uk-flex-center uk-background-secondary">
 			     <small> All rights reserved 2021 Alexis Boulange & Martin Bessey</small>
 			</footer>

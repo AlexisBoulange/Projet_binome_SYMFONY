@@ -19,4 +19,8 @@
             {% endfor %}
         <tbody>
     </table>
+    {% if is_granted("ROLE_ADMIN") %}
+        <a class=" uk-button uk-button-primary " href="{{ path('module_add') }}"> + Ajouter </a>
+    {% endif %}
+    
 {% endblock %}

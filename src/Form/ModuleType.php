@@ -20,9 +20,11 @@ class ModuleType extends AbstractType
         ->add('libelle', TextType::class, [
             'label' => 'Libellé',
             'required' => true,
+            'attr' => ['class' => 'uk-input'],
         ])
         ->add('descriptif', TextareaType::class, [
             'label' => 'Descriptif',
+            'attr' => ['class' => 'uk-input'],
         ])
         ->add('categorie', EntityType::class, [
             'label' => 'Categorie',
@@ -30,6 +32,7 @@ class ModuleType extends AbstractType
             'choice_label' => 'nom',
             'multiple' => true,
             'required' => true,
+            'attr' => ['class' => 'uk-select'],
         ])
         ->add('envoyer', SubmitType::class, [
             'attr' => ['class' => 'uk-button uk-button-secondary uk-margin-top'],
