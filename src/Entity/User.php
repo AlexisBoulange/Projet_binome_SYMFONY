@@ -110,13 +110,7 @@ class User implements UserInterface
         return $this;
     }
     
-    public function hasRoles($role)
-    {
-        return in_array($role, $this->roles);
-    }
-    public function isAdmin()
-    {
-        return in_array("ROLE_ADMIN", $this->roles);
+
     /**
      * @see UserInterface
      */
