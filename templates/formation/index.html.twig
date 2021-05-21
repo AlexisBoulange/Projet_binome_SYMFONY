@@ -16,7 +16,7 @@
                <tr> 
                   <td><strong>{{ formation.nom }}</strong></td>
                   <td>{{ formation.descriptif }}</td>
-                  <td><a href="#">{{ formation.sessions | length }}</a></td>
+                  <td><a href="{{ path('session_index', {id: formation.id}) }}">{{ formation.sessions | length }}</a></td>
                   {% if is_granted("ROLE_ADMIN") %}
                         <td>
                             <a class="uk-button-small uk-button-primary" href="{{ path('formation_edit', {id: formation.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
