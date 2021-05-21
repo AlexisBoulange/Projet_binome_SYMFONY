@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Session;
 use App\Entity\Stagiaire;
 use App\Form\StagiaireType;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/stagiaire")
+ * @IsGranted("ROLE_USER")
  */
 class StagiaireController extends AbstractController
 {
@@ -44,7 +46,18 @@ class StagiaireController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
         
-            $stagiaire = $form->getData();
+            // $stagiaire = $form->getData();
+            foreach($form->get('sessions')->getData() as $s)
+            {
+                if(!$stagiaire->getSessions()->contains($s))
+                {
+                    $session = new Session();
+                    $session->addStagiaire($stagiaire);
+                    $session->setFormation($s);
+                    $stagiaire->addSession($session);
+                }
+            }
+
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($stagiaire);
