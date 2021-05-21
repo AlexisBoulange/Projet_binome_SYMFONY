@@ -14,7 +14,7 @@
 
 			<h4>Session prévues:</h4>
 			{% if stagiaire.sessions | length == 0 %}
-				<span class="uk-label">Ce stagiaire n'est inscrit dans aucune session.</span>
+				<p class="uk-label">Ce stagiaire n'est inscrit dans aucune session.</p>
 			{% else %}
 				{% for session in stagiaire.sessions %}
 					<p>
@@ -26,6 +26,9 @@
 					</p>
 				{% endfor %}
 			{% endif %}
+			{% if is_granted("ROLE_ADMIN") %}
+            <a class=" uk-button uk-button-primary " href="{{ path('stagiaire_add') }}">Ajouter {{ stagiaire.prenom ~ ' ' ~ stagiaire.nom }} à une session</a>
+        	{% endif %}
 		</div>
 	</section>
 {% endblock %}

@@ -9,14 +9,12 @@
             <tr>
                <th>Libellé</th>
                <th>Catégorie</th>
-               <th>Programme<th>
             </tr>
         </thead>
             {% for module in modules %}
                <tr> 
                   <td>{{ module.libelle }}</td>
-                  <td>{{ module.categorie }}</td>
-                  <td>{{ module.programmers }}</td>
+                  <td>{{ module.categorie.nom }}</td>
                 </tr>
             {% endfor %}
         <tbody>

@@ -55,15 +55,6 @@ class StagiaireType extends AbstractType
                 'required' => true,
                 'attr' => ['class' => 'uk-input'],
             ])
-            ->add('sessions', EntityType::class, [
-                'label' => 'Session',
-                'class' => Session::class,
-                'choice_label' => function($session){
-                    return $session;
-                },
-                'multiple' => true,
-                'attr' => ['class' => 'uk-select'],
-            ])
             ->add('envoyer', SubmitType::class, [
                 'attr' => ['class' => 'uk-button uk-button-secondary uk-margin-top'],
             ]);

@@ -46,18 +46,7 @@ class StagiaireController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
         
-            // $stagiaire = $form->getData();
-            foreach($form->get('sessions')->getData() as $s)
-            {
-                if(!$stagiaire->getSessions()->contains($s))
-                {
-                    $session = new Session();
-                    $session->addStagiaire($stagiaire);
-                    $session->setFormation($s);
-                    $stagiaire->addSession($session);
-                }
-            }
-
+            $stagiaire = $form->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($stagiaire);
