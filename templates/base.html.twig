@@ -9,12 +9,11 @@
 		           and uncomment the following Encore helpers to start using Symfony UX #}
 		{% block stylesheets %}
 			{#{{ encore_entry_link_tags('app') }}#}
-			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.21/dist/css/uikit.min.css" /
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.21/dist/css/uikit.min.css" ></link>
 		{% endblock %}
 	</head>
 	<body>
 		{% block body %}
-<<<<<<< HEAD
 			<header class="uk-flex uk-flex-around">
 			    <a class="" href="{{ path('home') }}">
 				    <img data-src="img/logo.png" width="300" height="200" alt="" uk-img>
@@ -38,18 +37,6 @@
 						<a class="uk-active uk-link-heading" href="{{ path('stagiaire_index') }}">Stagiaires</a>
 						<a class="uk-active uk-link-heading" href="{{ path('categorie_index') }}">Catégories</a>
 						<a class="uk-active uk-link-heading" href="{{ path('module_index') }}">Modules</a>
->>>>>>> 38a77e6dff084b6b326119ee2e1968373c0fe21e
-=======
-			<header>
-			    <div class="uk-navbar-container">
-				    <nav class="uk-navbar-nav uk-flex-around" uk-navbar="dropbar: true;">
-						<a class="uk-active uk-link-heading"  href="{{ path('formation_index') }}">Formations</a>
-						<a class="uk-active uk-link-heading" href="{{ path('session_index') }}">Sessions</a>
-						{% if is_granted("ROLE_USER") %}
-						<a class="uk-active uk-link-heading" href="{{ path('stagiaire_index') }}">Stagiaires</a>
-						<a class="uk-active uk-link-heading" href="{{ path('categorie_index') }}">Catégories</a>
-						<a class="uk-active uk-link-heading" href="{{ path('module_index') }}">Modules</a>
->>>>>>> 38a77e6dff084b6b326119ee2e1968373c0fe21e
 						{% endif %}	
 						{% if is_granted("ROLE_ADMIN") %}
                 			<a class="uk-active uk-link-heading" href="{{ path('user_index') }}">Admin</a>
