@@ -32,20 +32,21 @@
 				    <nav class="uk-navbar-nav uk-flex-around">
 						<a class="uk-active uk-link-heading"  href="{{ path('formation_index') }}">Formations</a>
 						<a class="uk-active uk-link-heading" href="{{ path('session_index') }}">Sessions</a>
-						<a class="uk-active uk-link-heading" href="{{ path('module_index') }}">Modules</a>
                         {% if is_granted("ROLE_USER") %}
 						<a class="uk-active uk-link-heading" href="{{ path('stagiaire_index') }}">Stagiaires</a>
 						<a class="uk-active uk-link-heading" href="{{ path('categorie_index') }}">Catégories</a>
 						<a class="uk-active uk-link-heading" href="{{ path('module_index') }}">Modules</a>
 						{% endif %}	
+						
 						{% if is_granted("ROLE_ADMIN") %}
                 			<a class="uk-active uk-link-heading" href="{{ path('user_index') }}">Admin</a>
-                		{% endif %}				
+                		{% endif %}	
+									
 				    </nav>
 				</div>
 			{% block contenu %}{% endblock %}
 			<footer class="uk-flex uk-flex-center uk-background-secondary">
-			<small> All rights reserved 2021 Alexis Boulange & Martin Bessey</small>
+			     <small> All rights reserved 2021 Alexis Boulange & Martin Bessey</small>
 			</footer>
 		{% endblock %}
 	</body>		
