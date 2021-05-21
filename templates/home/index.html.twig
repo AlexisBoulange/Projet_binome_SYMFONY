@@ -2,17 +2,14 @@
 
 {% block title %}Hello HomeController!{% endblock %}
 {% block contenu %}
-<div class="uk-container-xlarge">
-<img src="/img/home_background.jpg" alt="">
-
+<div class="uk-background-top-left uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-middle uk-flex-center" style="background-image: url(/img/home_background.jpg);">
+    
+    <div>
     {% if is_granted("ROLE_USER") %}
-<<<<<<< HEAD
-        <h2>Hello {{ app.user.pseudo }}!</h2>
-=======
-        <h2>Hello {{ app.user.pseudo }}! ✅</h2>
->>>>>>> 38a77e6dff084b6b326119ee2e1968373c0fe21e
+        <h2 style="color: #fafafa" >Hello {{ app.user.pseudo }}!</h2>
     {% else %}
         
     {% endif %}
+    </div>
 </div>
 {% endblock %}
