@@ -18,9 +18,11 @@ class FormationType extends AbstractType
         ->add('nom', TextType::class, [
             'label' => 'Nom',
             'required' => true,
+            'attr' => ['class' => 'uk-input'],
         ])
         ->add('descriptif', TextareaType::class, [
             'label' => 'Descriptif',
+            'attr' => ['class' => 'uk-input'],
         ])
         ->add('envoyer', SubmitType::class, [
             'attr' => ['class' => 'uk-button uk-button-secondary uk-margin-top'],
