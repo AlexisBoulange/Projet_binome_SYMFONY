@@ -16,11 +16,13 @@
 		{% block body %}
 			<header>
 			    <div class="uk-navbar-container">
-				    <nav class="uk-navbar-nav uk-flex-around">
+				    <nav class="uk-navbar-nav uk-flex-around" uk-navbar="dropbar: true;">
 						<a class="uk-active uk-link-heading"  href="{{ path('formation_index') }}">Formations</a>
 						<a class="uk-active uk-link-heading" href="{{ path('session_index') }}">Sessions</a>
 						{% if is_granted("ROLE_USER") %}
 						<a class="uk-active uk-link-heading" href="{{ path('stagiaire_index') }}">Stagiaires</a>
+						<a class="uk-active uk-link-heading" href="{{ path('categorie_index') }}">Catégories</a>
+						<a class="uk-active uk-link-heading" href="{{ path('module_index') }}">Modules</a>
 						{% endif %}	
 						{% if is_granted("ROLE_ADMIN") %}
                 			<a class="uk-active uk-link-heading" href="{{ path('user_index') }}">Admin</a>

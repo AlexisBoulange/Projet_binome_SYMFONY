@@ -4,7 +4,7 @@
 {% block contenu %}
 <div class="wrapper">
     {% if is_granted("ROLE_USER") %}
-        <h2>Hello {{ app.user.email }}! ✅</h2>
+        <h2>Hello {{ app.user.pseudo }}! ✅</h2>
     {% else %}
         <h2>Hello visiteur!</h2>
     {% endif %}
