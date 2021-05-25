@@ -3,9 +3,9 @@
 {% block title %}Fiche Stagiaire{% endblock %}
 
 {% block contenu %}
-	<section class="uk-card">
-		<h4>Fiche stagiaire</h4>
-		<h2 class="uk-card-title uk-margin-remove-top">{{ stagiaire.prenom ~ ' ' ~ stagiaire.nom }}</h2>
+	<section class="uk-card uk-container uk-margin-large-top uk-margin-large-bottom">
+		<h1 class="uk-card-title">Fiche stagiaire</h1>
+		<h2>{{ stagiaire.prenom ~ ' ' ~ stagiaire.nom }}</h2>
 		<div class="uk-column-1-2">
 			<p>Sexe : {{ stagiaire.sexe }}</p>
 			<p>Date de Naissance : {{ stagiaire.dateNaissance | date('d-m-Y') }}</p>
@@ -14,7 +14,7 @@
 
 			<h4>Sessions prévues:</h4>
 			{% if stagiaire.sessions | length == 0 %}
-				<p class="uk-label">Ce stagiaire n'est inscrit dans aucune session.</p>
+				<p class="uk-label uk-label-warning">Ce stagiaire n'est inscrit dans aucune session.</p>
 			{% else %}
 				{% for session in stagiaire.sessions %}
 					<p>
