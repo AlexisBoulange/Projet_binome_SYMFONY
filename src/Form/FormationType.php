@@ -22,7 +22,7 @@ class FormationType extends AbstractType
         ])
         ->add('descriptif', TextareaType::class, [
             'label' => 'Descriptif',
-            'attr' => ['class' => 'uk-input'],
+            'attr' => ['class' => 'uk-textarea'],
         ])
         ->add('envoyer', SubmitType::class, [
             'attr' => ['class' => 'uk-button uk-button-secondary uk-margin-top'],

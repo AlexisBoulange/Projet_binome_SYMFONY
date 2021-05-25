@@ -19,16 +19,11 @@ class CategorieType extends AbstractType
             ->add('nom', TextType::class, [
                 'label' => 'Nom',
                 'required' => true,
+                'attr' => ['class' => 'uk-input'],
             ])
             ->add('detail', TextareaType::class, [
                 'label' => 'Détail',
-            ])
-            ->add('user', EntityType::class, [
-                'label' => 'Formateur',
-                'class' => User::class,
-                'choice_label' => 'nom',
-                'multiple' => true,
-                'required' => true,
+                'attr' => ['class' => 'uk-textarea'],
             ])
             ->add('envoyer', SubmitType::class, [
                 'attr' => ['class' => 'uk-button uk-button-secondary uk-margin-top'],

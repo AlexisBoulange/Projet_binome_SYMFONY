@@ -24,7 +24,7 @@ class ModuleType extends AbstractType
         ])
         ->add('descriptif', TextareaType::class, [
             'label' => 'Descriptif',
-            'attr' => ['class' => 'uk-input'],
+            'attr' => ['class' => 'uk-textarea'],
         ])
         ->add('categorie', EntityType::class, [
             'label' => 'Categorie',
