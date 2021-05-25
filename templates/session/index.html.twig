@@ -24,7 +24,7 @@
 					<td>{{ session.dateD | date('d/m/Y') }}</td>
 					<td>{{ session.dateF | date('d/m/Y') }}</td>
 					<td>{{ session.nbPlaces }}</td>
-					<td>{{}}</td>
+					<td>{{ session.nbPlaces - session.stagiaire | length}}</td>
 					{% if is_granted("ROLE_ADMIN") %}
 						<td>
 							<a class="uk-button-small uk-button-primary" href="{{ path('session_edit', {id: session.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
