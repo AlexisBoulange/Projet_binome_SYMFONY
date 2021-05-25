@@ -3,6 +3,7 @@
 {% block title %}Categories{% endblock %}
 
 {% block contenu %}
+    <section class="uk-container uk-margin-large-top uk-margin-large-bottom">
     <h2>Categories</h2>
     <table class="uk-table uk-table-divider uk-table-responsive">
         <thead>
@@ -28,5 +29,6 @@
     {% if is_granted("ROLE_ADMIN") %}
         <a class=" uk-button uk-button-primary " href="{{ path('categorie_add') }}"> + Ajouter </a>
     {% endif %}
+    </section>
 {% endblock %}
 
