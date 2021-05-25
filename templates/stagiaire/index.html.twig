@@ -1,40 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des stagiaires{% endblock %}
-
-{% block contenu %}
-    <h2>Stagiaires inscrits</h2>
-    <table class="uk-table uk-table-divider uk-table-responsive">
-        <thead>
-            <tr>
-                <th>Nom/Prénom</th>
-                <th>Ville</th>
-                <th>Mail</th>
-                <th>Sessions</th>
-                {% if is_granted("ROLE_ADMIN") %}
-                <th>Modifier/Supprimer</th>
-                {% endif %}
-            </tr>
-        </thead>
-            {% for stagiaire in stagiaires %}
-                <tr> 
-                    <td><a href="{{ path('stagiaire_show', {id: stagiaire.id}) }}">{{ stagiaire.nom ~ ' ' ~ stagiaire.prenom }}</a></td>
-                    <td>{{ stagiaire.ville }}</td>
-                    <td>{{ stagiaire.mail }}</td>
-                    <td>{{ stagiaire.sessions | length }}</td>
-                    {% if is_granted("ROLE_ADMIN") %}
-                        <td>
-                            <a class="uk-button-small uk-button-primary" href="{{ path('stagiaire_edit', {id: stagiaire.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
-                            <a class="uk-button-small uk-button-danger" href="{{ path('stagiaire_delete', {id: stagiaire.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
-                        </td>
-                    {% endif %}
-                </tr>
-            {% endfor %}
-        <tbody>
-    </table>
-        {% if is_granted("ROLE_ADMIN") %}
-            <a class=" uk-button uk-button-primary " href="{{ path('stagiaire_add') }}"> + Ajouter </a>
-        {% endif %}
+{% block title %}Liste des stagiaires
 {% endblock %}
 
-
+{% block contenu %}
+	<section class="uk-container uk-margin-large-top">
+		<h2>Stagiaires inscrits</h2>
+		<table class="uk-table uk-table-divider uk-table-responsive">
+			<thead>
+				<tr>
+					<th>Nom/Prénom</th>
+					<th>Ville</th>
+					<th>Mail</th>
+					<th>Sessions</th>
+					{% if is_granted("ROLE_ADMIN") %}
+						<th>Modifier/Supprimer</th>
+					{% endif %}
+				</tr>
+			</thead>
+			{% for stagiaire in stagiaires %}
+				<tr>
+					<td>
+						<a href="{{ path('stagiaire_show', {id: stagiaire.id}) }}">{{ stagiaire.nom ~ ' ' ~ stagiaire.prenom }}</a>
+					</td>
+					<td>{{ stagiaire.ville }}</td>
+					<td>{{ stagiaire.mail }}</td>
+					<td>{{ stagiaire.sessions | length }}</td>
+					{% if is_granted("ROLE_ADMIN") %}
+						<td>
+							<a class="uk-button-small uk-button-primary" href="{{ path('stagiaire_edit', {id: stagiaire.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
+							<a class="uk-button-small uk-button-danger" href="{{ path('stagiaire_delete', {id: stagiaire.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
+						</td>
+					{% endif %}
+				</tr>
+			{% endfor %}
+			<tbody></tbody>
+		</table>
+		{% if is_granted("ROLE_ADMIN") %}
+			<a class=" uk-button uk-button-primary " href="{{ path('stagiaire_add') }}">
+				+ Ajouter
+			</a>
+		{% endif %}
+	</section>
+{% endblock %}

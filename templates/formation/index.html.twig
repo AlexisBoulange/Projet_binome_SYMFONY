@@ -1,34 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Formations{% endblock %}
-
-{% block contenu %}
-    <h2>Formations</h2>
-    <table class="uk-table uk-table-divider uk-table-responsive">
-        <thead>
-            <tr>
-               <th>Intitulé</th>
-               <th>Descriptif</th>
-               <th>Sessions disponibles</th>   
-            </tr>
-        </thead>
-            {% for formation in formations %}
-               <tr> 
-                  <td><strong>{{ formation.nom }}</strong></td>
-                  <td>{{ formation.descriptif }}</td>
-                  <td><a href="#">{{ formation.sessions | length }}</a></td>
-                  {% if is_granted("ROLE_ADMIN") %}
-                        <td>
-                            <a class="uk-button-small uk-button-primary" href="{{ path('formation_edit', {id: formation.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
-                            <a class="uk-button-small uk-button-danger" href="{{ path('formation_delete', {id: formation.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
-                        </td>
-                    {% endif %}
-                </tr>
-            {% endfor %}
-        <tbody>
-    </table>
-    {% if is_granted("ROLE_ADMIN") %}
-        <a class=" uk-button uk-button-primary " href="{{ path('formation_add') }}"> + Ajouter </a>
-    {% endif %}
+{% block title %}Formations
 {% endblock %}
 
+{% block contenu %}
+	<section class="uk-container">
+		<h2>Formations</h2>
+		<table class="uk-table uk-table-divider uk-table-responsive">
+			<thead>
+				<tr>
+					<th>Intitulé</th>
+					<th>Descriptif</th>
+					<th>Sessions disponibles</th>
+				</tr>
+			</thead>
+			{% for formation in formations %}
+				<tr>
+					<td>
+						<a href="{{ path('formation_show', {id: formation.id}) }}["><strong>{{ formation.nom }}</strong></a>
+					</td>
+					<td>{{ formation.descriptif }}</td>
+					<td>
+						<a href="#">{{ formation.sessions | length }}</a>
+					</td>
+					{% if is_granted("ROLE_ADMIN") %}
+						<td>
+							<a class="uk-button-small uk-button-primary" href="{{ path('formation_edit', {id: formation.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
+							<a class="uk-button-small uk-button-danger" href="{{ path('formation_delete', {id: formation.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
+						</td>
+					{% endif %}
+				</tr>
+			{% endfor %}
+			<tbody></tbody>
+		</table>
+		{% if is_granted("ROLE_ADMIN") %}
+			<a class=" uk-button uk-button-primary " href="{{ path('formation_add') }}">
+				+ Ajouter
+			</a>
+		{% endif %}
+	</section>
+{% endblock %}

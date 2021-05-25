@@ -1,3 +1,27 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Liste des categories
+{% endblock %}
+
+{% block contenu %}
+	<section class="uk-container">
+		<h2>Liste des categories</h2>
+		<table class="uk-table uk-table-divider uk-table-responsive">
+			<thead>
+				<tr>
+					<th>Détails</th>
+					<th>Modules</th>
+				</tr>
+			</thead>
+			{% for categorie in categories %}
+				<tr>
+					<td>{{ categorie.detail }}</td>
+					<td></td>
+				</tr>
+			{% endfor %}
+			<tbody></tbody>
+		</table>
+	</section>
+{% endblock %}
+
 

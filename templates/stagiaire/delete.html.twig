@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Supprimer un stagiaire{% endblock %}
+
+{% block contenu %}
+   <div class="uk-card">
+   <h2>êtes vous sûr(e) de vouloir supprimer</h2>
+   {{ stagiaire.prenom ~ ' ' ~ stagiaire.nom }}
+   </div>
+   <div>
+   <a href="uk-button uk-button-primary" href="#">OUI</a>
+   <a class="uk-button uk-button-danger" href="#">NON</a>
+   </div>
+{% endblock %}

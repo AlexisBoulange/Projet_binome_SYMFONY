@@ -1,22 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des modules{% endblock %}
+{% block title %}Liste des modules
+{% endblock %}
 
 {% block contenu %}
-    <h2>Liste des modules</h2>
-    <table class="uk-table uk-table-divider uk-table-responsive">
-        <thead>
-            <tr>
-               <th>Libellé</th>
-               <th>Catégorie</th>
-            </tr>
-        </thead>
-            {% for module in modules %}
-               <tr> 
-                  <td>{{ module.libelle }}</td>
-                  <td>{{ module.categorie.nom }}</td>
-                </tr>
-            {% endfor %}
-        <tbody>
-    </table>
+	<section class="uk-container">
+		<h2>Liste des modules</h2>
+		<table class="uk-table uk-table-divider uk-table-responsive">
+			<thead>
+				<tr>
+					<th>Libellé</th>
+					<th>Catégorie</th>
+				</tr>
+			</thead>
+			{% for module in modules %}
+				<tr>
+					<td>{{ module.libelle }}</td>
+					<td>{{ module.categorie.nom }}</td>
+				</tr>
+			{% endfor %}
+			<tbody></tbody>
+		</table>
+	</section>
 {% endblock %}

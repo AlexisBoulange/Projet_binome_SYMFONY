@@ -14,12 +14,12 @@
 	</head>
 	<body>
 		{% block body %}
-			<header class="uk-flex uk-flex-around">
-			    <a class="" href="{{ path('home') }}">
+			<header class="uk-flex uk-flex-between ">
+			    <a class="uk-margin-small-top uk-align-left" href="{{ path('home') }}">
 				    <img data-src="img/logo.png" width="300" height="200" alt="" uk-img>
 			    </a>
-				<div class="uk-margin-top">
-				    <span uk-icon="user"></span>						
+				<div class="uk-margin-medium-top uk-margin-right">
+				    <span class="uk-margin-right" uk-icon="user"></span>						
 					{% if is_granted("ROLE_USER") %}
                 			<a class="uk-button uk-button-secondary" href="{{ path('app_logout') }}">Se déconnecter</a>
 						{% else %}
@@ -28,26 +28,26 @@
                     {% endif %}	
 				</div>
 			</header>
-			<div class="uk-navbar-container">
-				    <nav class="uk-navbar-nav uk-flex-around">
-						<a class="uk-active uk-link-heading"  href="{{ path('formation_index') }}">Formations</a>
-						<a class="uk-active uk-link-heading" href="{{ path('session_index') }}">Sessions</a>
+			<div class="uk-margin-small-top">
+				    <nav class="uk-navbar-nav uk-flex-around uk-margin-small-bottom">
+						<a class="uk-active uk-link-heading uk-text-bold"  href="{{ path('formation_index') }}">Formations</a>
+						<a class="uk-active uk-link-heading uk-text-bold" href="{{ path('session_index') }}">Sessions</a>
 					    
 						{% if is_granted("ROLE_USER") %}
-						    <a class="uk-active uk-link-heading" href="{{ path('stagiaire_index') }}">Stagiaires</a>
-						    <a class="uk-active uk-link-heading" href="{{ path('categorie_index') }}">Catégories</a>
-						    <a class="uk-active uk-link-heading" href="{{ path('module_index') }}">Modules</a>
+						    <a class="uk-active uk-link-heading uk-text-bold" href="{{ path('stagiaire_index') }}">Stagiaires</a>
+						    <a class="uk-active uk-link-heading uk-text-bold" href="{{ path('categorie_index') }}">Catégories</a>
+						    <a class="uk-active uk-link-heading uk-text-bold" href="{{ path('module_index') }}">Modules</a>
 						{% endif %}	
 						
 						{% if is_granted("ROLE_ADMIN") %}
-                			<a class="uk-active uk-link-heading" href="{{ path('user_index') }}">Admin</a>
+                			<a class="uk-active uk-link-heading uk-text-bold" href="{{ path('user_index') }}">Admin</a>
                 		{% endif %}	
 									
 				    </nav>
 				</div>
 			{% block contenu %}{% endblock %}
-			<footer class="uk-flex uk-flex-center uk-background-secondary">
-			     <small> All rights reserved 2021 Alexis Boulange & Martin Bessey</small>
+			<footer class="uk-flex uk-flex-center  uk-background-secondary uk-height-small">
+				<small class="uk-margin-top"> All rights reserved 2021 Alexis Boulange & Martin Bessey</small>
 			</footer>
 		{% endblock %}
 	</body>		
