@@ -4,22 +4,24 @@
 {% endblock %}
 
 {% block contenu %}
-	<section class="uk-container">
-		<h2>Liste des modules</h2>
-		<table class="uk-table uk-table-divider uk-table-responsive">
-			<thead>
-				<tr>
-					<th>Libellé</th>
-					<th>Catégorie</th>
-				</tr>
-			</thead>
-			{% for module in modules %}
-				<tr>
-					<td>{{ module.libelle }}</td>
-					<td>{{ module.categorie.nom }}</td>
-				</tr>
-			{% endfor %}
-			<tbody></tbody>
-		</table>
-	</section>
+    <h2>Liste des modules</h2>
+    <table class="uk-table uk-table-divider uk-table-responsive">
+        <thead>
+            <tr>
+               <th>Libellé</th>
+               <th>Catégorie</th>
+            </tr>
+        </thead>
+            {% for module in modules %}
+               <tr> 
+                  <td>{{ module.libelle }}</td>
+                  <td>{{ module.categorie.nom }}</td>
+                </tr>
+            {% endfor %}
+        <tbody>
+    </table>
+    {% if is_granted("ROLE_ADMIN") %}
+        <a class=" uk-button uk-button-primary " href="{{ path('module_add') }}"> + Ajouter </a>
+    {% endif %}
+    
 {% endblock %}

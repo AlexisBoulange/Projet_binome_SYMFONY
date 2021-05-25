@@ -1,27 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des categories
-{% endblock %}
+{% block title %}Categories{% endblock %}
 
 {% block contenu %}
-	<section class="uk-container">
-		<h2>Liste des categories</h2>
-		<table class="uk-table uk-table-divider uk-table-responsive">
-			<thead>
-				<tr>
-					<th>Détails</th>
-					<th>Modules</th>
-				</tr>
-			</thead>
-			{% for categorie in categories %}
-				<tr>
-					<td>{{ categorie.detail }}</td>
-					<td></td>
-				</tr>
-			{% endfor %}
-			<tbody></tbody>
-		</table>
-	</section>
+    <h2>Categories</h2>
+    <table class="uk-table uk-table-divider uk-table-responsive">
+        <thead>
+            <tr>
+               <th>Nom</th>
+               <th>Détail</th> 
+            </tr>
+        </thead>
+            {% for categorie in categories %}
+               <tr> 
+                  <td><strong>{{ categorie.nom }}</strong></td>
+                  <td>{{ categorie.detail }}</td>
+                  {% if is_granted("ROLE_ADMIN") %}
+                        <td>
+                            <a class="uk-button-small uk-button-primary" href="{{ path('categorie_edit', {id: categorie.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
+                            <a class="uk-button-small uk-button-danger" href="{{ path('categorie_delete', {id: categorie.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        <tbody>
+    </table>
+    {% if is_granted("ROLE_ADMIN") %}
+        <a class=" uk-button uk-button-primary " href="{{ path('categorie_add') }}"> + Ajouter </a>
+    {% endif %}
 {% endblock %}
-
 

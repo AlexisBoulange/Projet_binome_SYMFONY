@@ -3,13 +3,13 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>
-			{% block title %}Caribou Formation{% endblock %}
+			{% block title %}Super Formation{% endblock %}
 		</title>
 		{# Run `composer require symfony/webpack-encore-bundle`
 		           and uncomment the following Encore helpers to start using Symfony UX #}
 		{% block stylesheets %}
 			{#{{ encore_entry_link_tags('app') }}#}
-			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.21/dist/css/uikit.min.css" /
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.21/dist/css/uikit.min.css" ></link>
 		{% endblock %}
 	</head>
 	<body>
@@ -45,9 +45,16 @@
 									
 				    </nav>
 				</div>
+					<div class="uk-container">
 			{% block contenu %}{% endblock %}
+<<<<<<< HEAD
 			<footer class="uk-flex uk-flex-center  uk-background-secondary uk-height-small">
 				<small class="uk-margin-top"> All rights reserved 2021 Alexis Boulange & Martin Bessey</small>
+=======
+					</div>
+			<footer class="uk-flex uk-flex-center uk-background-secondary">
+			     <small> All rights reserved 2021 Alexis Boulange & Martin Bessey</small>
+>>>>>>> 70021a6ba03531bce3d446774aa962b0b7463269
 			</footer>
 		{% endblock %}
 	</body>		
