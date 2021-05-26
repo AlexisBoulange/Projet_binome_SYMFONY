@@ -30,7 +30,6 @@ class ModuleType extends AbstractType
             'label' => 'Categorie',
             'class' => Categorie::class,
             'choice_label' => 'nom',
-            'multiple' => true,
             'required' => true,
             'attr' => ['class' => 'uk-select'],
         ])
