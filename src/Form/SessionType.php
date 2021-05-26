@@ -2,9 +2,9 @@
 
 namespace App\Form;
 
-use App\Entity\User;
 use App\Entity\Session;
 use App\Entity\Formation;
+use App\Entity\Stagiaire;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -12,6 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class SessionType extends AbstractType
 {
@@ -40,18 +41,22 @@ class SessionType extends AbstractType
                 'label' => 'Formation',
                 'class' => Formation::class,
                 'choice_label' => 'nom',
-                'multiple' => true,
                 'required' => true,
-                'attr' => ['class' => 'uk-input'],
+                'attr' => ['class' => 'uk-select'],
             ])
-            // ->add('stagiaire', EntityType::class, [
-            //     'label' => 'Stagiaire',
-            //     'class' => User::class,
-            //     'choice_label' => 'nom',
-            //     'multiple' => true,
-            //     'required' => true,
-            //     'attr' => ['class' => 'uk-input'],
-            // ])
+            ->add('stagiaire', CollectionType::class, [
+                'entry_type' => EntityType::class,
+                'entry_options' => [
+                    'label' => "Choisir un stagiaire",
+                    'class' => Stagiaire::class,
+                ],
+                'by_reference' => false,
+                'required' => false,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'label' => false,
+                'attr' => ['class' => 'uk-select'],
+            ])
             ->add('envoyer', SubmitType::class, [
                 'attr' => ['class' => 'uk-button uk-button-secondary uk-margin-top'],
             ]);

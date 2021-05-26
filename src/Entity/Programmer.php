@@ -30,7 +30,7 @@ class Programmer
     private $modules;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="integer")
      */
     private $duree;
 
@@ -73,5 +73,10 @@ class Programmer
         $this->duree = $duree;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getModules().' : '.$this->getDuree(). ' jour(s), ';
     }
 }

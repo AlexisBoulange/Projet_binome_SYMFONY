@@ -47,8 +47,8 @@
 				</nav>
 			</div>
 			{% block contenu %}{% endblock %}
-			<footer uk-sticky="bottom: true" class="uk-flex uk-flex-center  uk-background-secondary uk-height-small">
-				<small class="uk-margin-top"> All rights reserved 2021 Alexis Boulange & Martin Bessey</small>
+			<footer class="uk-flex uk-flex-center uk-background-secondary uk-position-fixed uk-position-bottom">
+			    <small> All rights reserved 2021 Alexis Boulange & Martin Bessey</small>
 			</footer>
 		{% endblock %}
 	</body>		
@@ -56,6 +56,7 @@
 		{#{{ encore_entry_script_tags('app') }}#}
 		<script src="https://cdn.jsdelivr.net/npm/uikit@3.6.21/dist/js/uikit.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.21/dist/js/uikit-icons.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	{% endblock %}
 </html>
 
