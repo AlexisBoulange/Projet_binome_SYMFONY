@@ -55,6 +55,8 @@ class SessionController extends AbstractController
 
         return $this->render('session/new.html.twig', [
             'formAddsession' => $form->createView(),
+            'session' => $session,
+            'editMode' => $session->getId() !==null
         ]);
     }
 
@@ -70,6 +72,15 @@ class SessionController extends AbstractController
 
         return $this->redirectToRoute('session_index');
     }
+
+    // /**
+    //  * @Route("/addDuree/{id}, name="add_duree")
+    //  * @IsGranted("ROLE_ADMIN")
+    //  */
+    // public function addModuleToSession(){
+
+
+    // }
 
     /**
      * @Route("/{id}", name="session_show")

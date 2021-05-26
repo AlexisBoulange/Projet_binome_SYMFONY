@@ -3,6 +3,30 @@
 {% block title %}Ajouter une session{% endblock %}
 
 {% block contenu %}
-   <h2>Ajouter une session</h2>
-   {{ form(formAddsession) }}
+   {% if editMode %}
+      <h2>Modifier une session</h2>
+   {% else %}
+      <h2>Ajouter une session</h2>
+   {% endif %}
+      {{ form_start(formAddsession) }}
+			{{ form_row(formAddsession.formation) }}
+			{{ form_row(formAddsession.dateD) }}
+			{{ form_row(formAddsession.dateF) }}     
+			{{ form_row(formAddsession.nbPlaces) }}
+         <ul id="stagiaires" data-prototype="{{ form_row(formAddsession.stagiaire.vars.prototype)|e }}">
+            
+            {% for stagiaire in formAddsession.stagiaire %}
+               <li class="stagiaire">
+               {{ form_row(stagiaire) }}
+               </li>
+            {% endfor %}
+
+         </ul>
+
+			{{ form_row(formAddsession.envoyer) }}
+		{{ form_end(formAddsession) }}
+{% endblock %}
+{% block javascripts %}
+   {{ parent() }}
+   <script src="/js/collectionHandler.js"></script>
 {% endblock %}
