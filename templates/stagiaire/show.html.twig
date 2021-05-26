@@ -1,34 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Fiche Stagiaire{% endblock %}
+{% block title %}Fiche Stagiaire
+{% endblock %}
 
 {% block contenu %}
-	<section class="uk-card uk-container uk-margin-large-top uk-margin-large-bottom">
-		<h1 class="uk-card-title">Fiche stagiaire</h1>
-		<h2>{{ stagiaire.prenom ~ ' ' ~ stagiaire.nom }}</h2>
-		<div class="uk-column-1-2">
-			<p>Sexe : {{ stagiaire.sexe }}</p>
-			<p>Date de Naissance : {{ stagiaire.dateNaissance | date('d-m-Y') }}</p>
-			<p>Mail : {{ stagiaire.mail }}</p>
-			<p>Tél : {{ stagiaire.telephone }}</p>
+	<section class="uk-card">
+		<div class="uk-background-top-left uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-middle uk-flex-center" style="background-image: url(/img/home_background.jpg); height: 100vh;" uk-parallax="bgy: -200">
+			<div class="uk-container uk-background-default">
+			<h1 style="font-family: 'Nunito', sans-serif;" class="uk-card-title uk-margin-top">Fiche stagiaire</h1>
+			<h2 style="font-family: 'Nunito', sans-serif; font-weight: 700;">{{ stagiaire.prenom ~ ' ' ~ stagiaire.nom }}</h2>
+			<div class="uk-column-1-2">
+				<p>Sexe :
+					{{ stagiaire.sexe }}</p>
+				<p>Date de Naissance :
+					{{ stagiaire.dateNaissance | date('d-m-Y') }}</p>
+				<p>Mail :
+					{{ stagiaire.mail }}</p>
+				<p class="uk-margin-xlarge-bottom">Tél :
+					{{ stagiaire.telephone }}</p>
 
-			<h4>Sessions prévues:</h4>
-			{% if stagiaire.sessions | length == 0 %}
-				<p class="uk-label uk-label-warning">Ce stagiaire n'est inscrit dans aucune session.</p>
-			{% else %}
-				{% for session in stagiaire.sessions %}
-					<p>
-						<a href="{{ path('session_show', {id: session.id}) }}">{{ session.formation}} :</a>
-						du 
-						{{ session.dateD | date('d-m-Y') }}
-						au 
-						{{ session.dateF | date('d-m-Y') }}
-					</p>
-				{% endfor %}
-			{% endif %}
-			{% if is_granted("ROLE_ADMIN") %}
-            <a class=" uk-button uk-button-primary " href="{{ path('stagiaire_add') }}">Ajouter {{ stagiaire.prenom ~ ' ' ~ stagiaire.nom }} à une session</a>
-        	{% endif %}
+				<h4>Sessions prévues:</h4>
+				{% if stagiaire.sessions | length == 0 %}
+					<p class="uk-label uk-label-warning">Ce stagiaire n'est inscrit dans aucune session.</p>
+				{% else %}
+					{% for session in stagiaire.sessions %}
+						<p>
+							<a href="{{ path('session_show', {id: session.id}) }}">{{ session.formation}}
+								:</a>
+							du
+							{{ session.dateD | date('d-m-Y') }}
+							au
+							{{ session.dateF | date('d-m-Y') }}
+						</p>
+					{% endfor %}
+				{% endif %}
+				{% if is_granted("ROLE_ADMIN") %}
+					<a class=" uk-button uk-button-primary" href="{{ path('stagiaire_add') }}">Ajouter
+						{{ stagiaire.prenom ~ ' ' ~ stagiaire.nom }}
+						à une session</a>
+				{% endif %}
+				</div>
+			</div>
 		</div>
 	</section>
 {% endblock %}

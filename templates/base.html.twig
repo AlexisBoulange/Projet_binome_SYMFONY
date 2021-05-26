@@ -10,41 +10,42 @@
 		{% block stylesheets %}
 			{#{{ encore_entry_link_tags('app') }}#}
 			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.21/dist/css/uikit.min.css" ></link>
+			<link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 		{% endblock %}
 	</head>
 	<body>
 		{% block body %}
 			<header class="uk-flex uk-flex-between ">
-			    <a class="uk-margin-small-top uk-align-left" href="{{ path('home') }}">
+			    <a class="uk-margin-small-top uk-margin-large-left" href="{{ path('home') }}">
 				    <img data-src="img/logo.png" width="300" height="200" alt="" uk-img>
 			    </a>
-				<div class="uk-margin-medium-top uk-margin-right">
-				    <span class="uk-margin-right" uk-icon="user"></span>						
+				<div class="uk-margin-medium-top uk-margin-large-right">
+				    <span class="uk-margin-right" uk-icon="icon: user; ratio: 2" style="font-family: 'Nunito', sans-serif; font-size:18px;"></span>						
 					{% if is_granted("ROLE_USER") %}
                 			<a class="uk-button uk-button-secondary" href="{{ path('app_logout') }}">Se déconnecter</a>
 						{% else %}
-						    <a class="uk-active uk-link-heading" href="{{ path('app_register') }}">S'enregister</a>
+						    <a class="uk-active uk-link-heading" style="font-family: 'Nunito', sans-serif; font-size:16px;" href="{{ path('app_register') }}">S'enregister</a>
 							<a class="uk-button uk-button-secondary uk-margin-left" href="{{ path('app_login') }}">Connexion</a>					
                     {% endif %}	
 				</div>
 			</header>
-			<div class="uk-margin-small-top">
-				    <nav class="uk-navbar-nav uk-flex-around uk-margin-small-bottom">
-						<a class="uk-active uk-link-heading uk-text-bold"  href="{{ path('formation_index') }}">Formations</a>
-						<a class="uk-active uk-link-heading uk-text-bold" href="{{ path('session_index') }}">Sessions</a>
+			<div class="uk-margin-medium-top">
+				<nav class="uk-navbar-nav uk-flex-around uk-margin-small-bottom" style="font-family: 'Nunito', sans-serif; font-size:18px;">
+					<a class="uk-active uk-link-heading uk-text-bold" href="{{ path('formation_index') }}">Formations</a>
+					<a class="uk-active uk-link-heading uk-text-bold" href="{{ path('session_index') }}">Sessions</a>
 					    
-						{% if is_granted("ROLE_USER") %}
-						    <a class="uk-active uk-link-heading uk-text-bold" href="{{ path('stagiaire_index') }}">Stagiaires</a>
-						    <a class="uk-active uk-link-heading uk-text-bold" href="{{ path('categorie_index') }}">Catégories</a>
-						    <a class="uk-active uk-link-heading uk-text-bold" href="{{ path('module_index') }}">Modules</a>
-						{% endif %}	
+					{% if is_granted("ROLE_USER") %}
+						<a class="uk-active uk-link-heading uk-text-bold" href="{{ path('stagiaire_index') }}">Stagiaires</a>
+						<a class="uk-active uk-link-heading uk-text-bold" href="{{ path('categorie_index') }}">Catégories</a>
+						<a class="uk-active uk-link-heading uk-text-bold" href="{{ path('module_index') }}">Modules</a>
+					{% endif %}	
 						
-						{% if is_granted("ROLE_ADMIN") %}
-                			<a class="uk-active uk-link-heading uk-text-bold" href="{{ path('user_index') }}">Admin</a>
-                		{% endif %}	
-									
-				    </nav>
-				</div>
+					{% if is_granted("ROLE_ADMIN") %}
+                		<a class="uk-active uk-link-heading uk-text-bold" href="{{ path('user_index') }}">Admin</a>
+                	{% endif %}					
+				</nav>
+			</div>
 			{% block contenu %}{% endblock %}
 			<footer uk-sticky="bottom: true" class="uk-flex uk-flex-center  uk-background-secondary uk-height-small">
 				<small class="uk-margin-top"> All rights reserved 2021 Alexis Boulange & Martin Bessey</small>

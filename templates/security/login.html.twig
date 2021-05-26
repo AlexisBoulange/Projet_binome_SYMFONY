@@ -19,11 +19,11 @@
 					</div>
 				{% endif %}
 				<div>
-					<h1 class="h3 mb-3 font-weight-normal" style="color: #fafafa;">Connexion</h1>
-					<label style="color: #fafafa;" for="inputEmail">Email</label>
-					<input class="uk-input uk-margin-bottom" type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+					<h1 class="h3 mb-3 font-weight-normal" style="color: #fafafa; font-family: 'Nunito', sans-serif; font-weight: 700;">Connexion</h1>
+					<label style="color: #fafafa;" for="inputPseudo">Pseudo</label>
+					<input class="uk-input uk-margin-bottom" type="text" value="{{ last_username }}" name="pseudo" id="inputPseudo" autocomplete="pseudo" required autofocus>
 					<label style="color: #fafafa;" for="inputPassword">Mot de passe</label>
-					<input class="uk-input" type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+					<input class="uk-input" type="password" name="password" id="inputPassword" autocomplete="current-password" required>
 
 					<input
 					type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">

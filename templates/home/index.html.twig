@@ -6,12 +6,12 @@
 	<div class="uk-background-top-left uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-middle uk-flex-center" style="background-image: url(/img/home_background.jpg); height: 100vh;" uk-parallax="bgy: -200">
 		<div class="uk-flex uk-flex-column ">
 			{% if is_granted("ROLE_USER") %}
-				<h2 class="uk-heading-large" style="color: #fafafa">Bonjour
+				<h2 class="uk-heading-large" style="color: #fafafa; font-family: 'Nunito', sans-serif; font-weight:700;">Bonjour
 					{{ app.user.pseudo }}!</h2>
 
 			{% else %}
-				<h1 class="uk-heading-large" style="color: #fafafa">Bienvenue!</h2>
-				<p class="uk-heading-small uk-text-center uk-margin-remove-top" style="color: #fafafa; font-size: 38px;">Connectez-vous</p>
+				<h1 class="uk-heading-large" style="color: #fafafa; font-family: 'Nunito', sans-serif; font-weight:700;">Bienvenue!</h2>
+				<p class="uk-heading-small uk-text-center uk-margin-remove-top" style="color: #fafafa; font-family: 'Nunito', sans-serif;">Connectez-vous</p>
 			</div>
 		{% endif %}
 	</div>

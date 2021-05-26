@@ -5,7 +5,7 @@
 
 {% block contenu %}
 	<section class="uk-container uk-margin-large-top uk-margin-large-bottom">
-		<h2>Formations</h2>
+		<h2 style="font-family: 'Nunito', sans-serif; font-weight: 700;">Formations</h2>
 		<table class="uk-table uk-table-divider uk-table-responsive">
 			<thead>
 				<tr>
@@ -21,7 +21,7 @@
 					</td>
 					<td>{{ formation.descriptif }}</td>
 					<td>
-						<a href="#">{{ formation.sessions | length }}</a>
+						<a href="{{ path('session_index') }}">{{ formation.sessions | length }}</a>
 					</td>
 					{% if is_granted("ROLE_ADMIN") %}
 						<td>
