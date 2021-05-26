@@ -55,6 +55,8 @@ class FormationController extends AbstractController
 
         return $this->render('formation/new.html.twig', [
             'formAddFormation' => $form->createView(),
+            'formation' => $formation,
+            'editMode' => $formation->getId() !==null
         ]);
     }
 

@@ -1,8 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter une formation{% endblock %}
+{% block title %}Ajouter/Modifier une formation{% endblock %}
 
 {% block contenu %}
-   <h2>Ajouter une formation</h2>
+<section class="uk-container uk-margin-large-top uk-margin-large-bottom">
+   {% if editMode %}
+      <h2>Modifier une formation</h2>
+   {% else %}
+      <h2>Ajouter une formation</h2>
+   {% endif %}
    {{ form(formAddFormation) }}
+</section>
 {% endblock %}

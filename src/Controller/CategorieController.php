@@ -55,6 +55,8 @@ class CategorieController extends AbstractController
 
         return $this->render('categorie/new.html.twig', [
             'formAddCategorie' => $form->createView(),
+            'categorie' => $categorie,
+            'editMode' => $categorie->getId() !==null
         ]);
     }
 

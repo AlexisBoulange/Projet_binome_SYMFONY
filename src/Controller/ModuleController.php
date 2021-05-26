@@ -54,7 +54,9 @@ class ModuleController extends AbstractController
         }
 
         return $this->render('module/new.html.twig', [
-            'formAddmodule' => $form->createView(),
+            'formAddModule' => $form->createView(),
+            'module' => $module,
+            'editMode' => $module->getId() !==null
         ]);
     }
 

@@ -4,7 +4,11 @@
 
 {% block contenu %}
 <section class="uk-container uk-margin-large-top uk-margin-large-bottom">
-   <h2>Ajouter un stagiaire</h2>
-   {{ form(formAddstagiaire) }}
+   {% if editMode %}
+      <h2>Modifier un stagiaire</h2>
+   {% else %}
+      <h2>Ajouter un stagiaire</h2>
+   {% endif %}
+   {{ form(formAddStagiaire) }}
 </section>
 {% endblock %}

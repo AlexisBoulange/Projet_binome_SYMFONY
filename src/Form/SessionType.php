@@ -55,7 +55,6 @@ class SessionType extends AbstractType
                 'allow_add' => true,
                 'allow_delete' => true,
                 'label' => false,
-                'attr' => ['class' => 'uk-select'],
             ])
             ->add('envoyer', SubmitType::class, [
                 'attr' => ['class' => 'uk-button uk-button-secondary uk-margin-top'],

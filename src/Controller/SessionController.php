@@ -54,7 +54,7 @@ class SessionController extends AbstractController
         }
 
         return $this->render('session/new.html.twig', [
-            'formAddsession' => $form->createView(),
+            'formAddSession' => $form->createView(),
             'session' => $session,
             'editMode' => $session->getId() !==null
         ]);
