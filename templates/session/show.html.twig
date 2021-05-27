@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails session
+{% endblock %}
+
+{% block contenu %}
+	<section class="uk-card">
+		<div class="uk-background-top-left uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-middle uk-flex-center" style="background-image: url(/img/home_background.jpg); height: 100vh;" uk-parallax="bgy: -200">
+			<div class="uk-container uk-background-default">
+				<h1 style="font-family: 'Nunito', sans-serif;" class="uk-card-title uk-margin-top">Détails session</h1>
+				<h2 style="font-family: 'Nunito', sans-serif; font-weight: 700;">{{ session.formation }}</h2>
+				<div class="uk-column-1-2">
+					<p>Date de Début:
+						<strong>{{ session.dateD | date('d-m-Y') }}</strong>
+					</p>
+					<p>Date de fin:
+						<strong>{{ session.dateF | date('d-m-Y')}}</strong>
+					</p>
+					<p class="uk-margin-xlarge-bottom">Nombre de places:
+						<strong>{{ session.nbPlaces}}</strong>
+					</p>
+					<h4 class="uk-margin-large-left">Liste des modules:</h4>       
+					<p>
+						{% for programmer in session.programmers %}
+							<a href="{{ path('module_show', {id: programmer.id}) }}" class="uk-margin-large-left">{{ programmer.modules.libelle }}:</a>
+							heures.<br>
+						{% endfor %}
+					</p>                
+                        {% if is_granted("ROLE_ADMIN") %}
+					        <a class=" uk-button uk-button-primary uk-margin-large-left" href="{{ path('session_add') }}" uk-icon="icon: file-plus" title="Ajouter"></a>
+                            <a class=" uk-button uk-button-danger uk-margin-large-left" href="{{ path('session_add') }}" uk-icon="icon: file-trash"title="Supprimer"></a>
+				        {% endif %}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="/js/collectionHandlerDuree.js"></script>
+{% endblock %}
