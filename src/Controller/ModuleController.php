@@ -22,7 +22,7 @@ class ModuleController extends AbstractController
     {
         $modules = $this->getDoctrine()
             ->getRepository(Module::class)
-            ->findBy([], ['categorie' => 'DESC']);
+            ->findBy([], ['libelle' => 'ASC']);
 
         return $this->render('module/index.html.twig', [
             'modules' => $modules

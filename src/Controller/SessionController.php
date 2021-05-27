@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Session;
 use App\Form\SessionType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -73,14 +74,34 @@ class SessionController extends AbstractController
         return $this->redirectToRoute('session_index');
     }
 
-    // /**
-    //  * @Route("/addDuree/{id}, name="add_duree")
-    //  * @IsGranted("ROLE_ADMIN")
-    //  */
-    // public function addModuleToSession(){
+    /**
+     * @Route("/addDuree/{id}", name="add_duree")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function addModuleToSession(Request $request, Session $session, EntityManagerInterface $entityManager){
 
 
-    // }
+        $form = $this->createForm('App\Form\AteliersType', $session);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            // $session = $form->getData();
+
+            // $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($session);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('session_index');
+        }
+
+        return $this->render('programmer/addDuree.html.twig', [
+            'form' => $form->createView(),
+            'session' => $session,
+            'editMode' => $session->getId() !==null
+        ]);
+
+    }
 
     /**
      * @Route("/{id}", name="session_show")

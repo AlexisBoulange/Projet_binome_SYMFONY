@@ -21,8 +21,8 @@
 				    <img data-src="img/logo.png" width="300" height="200" alt="" uk-img>
 			    </a>
 				<div class="uk-margin-medium-top uk-margin-large-right">
-				    <span class="uk-margin-right" uk-icon="icon: user; ratio: 2" style="font-family: 'Nunito', sans-serif; font-size:18px;"></span>						
 					{% if is_granted("ROLE_USER") %}
+				    		<a class="uk-margin-right" uk-icon="icon: user; ratio: 2" href="{{ path('user_show', {id: app.user.id}) }}" style="font-family: 'Nunito', sans-serif; font-size:18px;"></a>						
                 			<a class="uk-button uk-button-secondary" href="{{ path('app_logout') }}">Se déconnecter</a>
 						{% else %}
 						    <a class="uk-active uk-link-heading" style="font-family: 'Nunito', sans-serif; font-size:16px;" href="{{ path('app_register') }}">S'enregister</a>

@@ -19,7 +19,7 @@
 			{% for session in sessions %}
 				<tr>
 					<td>
-						<a href="{{ path('formation_show', {id: session.formation.id}) }}">{{ session.formation.nom }}</a>
+						<a href="{{ path('session_show', {id: session.id}) }}">{{ session.formation.nom }}</a>
 					</td>
 					<td>{{ session.dateD | date('d/m/Y') }}</td>
 					<td>{{ session.dateF | date('d/m/Y') }}</td>

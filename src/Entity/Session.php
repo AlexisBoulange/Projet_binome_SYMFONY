@@ -46,7 +46,7 @@ class Session
     private $stagiaire;
 
     /**
-     * @ORM\OneToMany(targetEntity=Programmer::class, mappedBy="sessions", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Programmer::class, mappedBy="sessions", orphanRemoval=true, cascade={"persist"})
      */
     private $programmers;
 
