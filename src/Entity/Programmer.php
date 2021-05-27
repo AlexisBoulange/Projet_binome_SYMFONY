@@ -63,20 +63,28 @@ class Programmer
         return $this;
     }
 
-    public function getDuree(): ?\DateTimeInterface
+    public function __toString()
+    {
+        return $this->getModules().' : '.$this->getDuree(). ' jour(s), ';
+    }
+
+    /**
+     * Get the value of duree
+     */ 
+    public function getDuree()
     {
         return $this->duree;
     }
 
-    public function setDuree(\DateTimeInterface $duree): self
+    /**
+     * Set the value of duree
+     *
+     * @return  self
+     */ 
+    public function setDuree($duree)
     {
         $this->duree = $duree;
 
         return $this;
-    }
-
-    public function __toString()
-    {
-        return $this->getModules().' : '.$this->getDuree(). ' jour(s), ';
     }
 }

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des sessions
+{% endblock %}
+
+{% block contenu %}
+	<section class="uk-container uk-margin-large-top uk-margin-large-bottom">
+		<h2 style="font-family: 'Nunito', sans-serif; font-weight: 700;">Sessions disponibles</h2>
+		<table class="uk-table uk-table-divider uk-table-responsive" style="font-family: 'Nunito', sans-serif;">
+			<thead>
+				<tr>
+					<th>Formation</th>
+					<th>Date début</th>
+					<th>Date fin</th>
+					<th>Nb de places disponibles</th>
+					<th>Nb de places restantes</th>
+				</tr>
+			</thead>
+			{% for sessionD in session %}
+				<tr>
+					<td>
+						<a href="{{ path('session_show', {id: sessionD.id}) }}">{{ sessionD.formation.nom }}</a>
+					</td>
+					<td>{{ sessionD.dateD | date('d/m/Y') }}</td>
+					<td>{{ sessionD.dateF | date('d/m/Y') }}</td>
+					<td>{{ sessionD.nbPlaces }}</td>
+					<td>{{ sessionD.nbPlaces - sessionD.stagiaire | length}}</td>
+					{% if is_granted("ROLE_ADMIN") %}
+						<td>
+							<a class="uk-button-small uk-button-primary" href="{{ path('session_edit', {id: session.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
+							<a class="uk-button-small uk-button-danger" href="{{ path('session_delete', {id: session.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
+						</td>
+					{% endif %}
+				</tr>
+			{% endfor %}
+			<tbody></tbody>
+		</table>
+		{% if is_granted("ROLE_ADMIN") %}
+			<a class=" uk-button uk-button-primary " href="{{ path('add_duree', {id: session.id}) }}">
+				+ Ajouter
+			</a>
+		{% endif %}
+	</section>
+{% endblock %}
+

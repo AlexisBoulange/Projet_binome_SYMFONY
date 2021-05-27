@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter/modifier une duree
+{% endblock %}
+
+{% block contenu %}
+	<section class="uk-container uk-margin-large-top uk-margin-large-bottom">
+		{% if editMode %}
+			<h2>Modifier une duree</h2>
+		{% else %}
+			<h2>Ajouter une duree</h2>
+		{% endif %}
+
+		{{ form_start(form) }}
+		
+		<ul id="gestionDurees" data-prototype="{{ form_row(form.programmers.vars.prototype)|e }}">
+			{% for atelier in form.programmers %}
+				<li class="gestionDuree">
+					{{ form_row(atelier) }}
+				</li>
+			{% endfor %}
+		</ul>
+		{{ form_row(form.envoyer) }}
+		{{ form_end(form) }}
+	</section>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+    <script src="/js/collectionHandlerDuree.js"></script>
+{% endblock %}
