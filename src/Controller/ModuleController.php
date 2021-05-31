@@ -59,7 +59,16 @@ class ModuleController extends AbstractController
             'editMode' => $module->getId() !==null
         ]);
     }
-
+  /**
+     * @Route("/confirm/{id}", name="module_confirmation")
+     * @IsGranted("ROLE_ADMIN")
+    */
+    public function showConfirm(Module $module): Response
+    {
+        return $this->render('module/confirmation.html.twig', [
+            'module' => $module,
+        ]);
+    }
     /**
      * @Route("/delete/{id}", name="module_delete")
      * @IsGranted("ROLE_ADMIN")
@@ -70,8 +79,11 @@ class ModuleController extends AbstractController
         $entityManager->remove($module);
         $entityManager->flush();
 
-        return $this->redirectToRoute('module_index');
+        return $this->render('module/delete.html.twig', [
+            'module' => $module,
+        ]);
     }
+    
 
     /**
      * @Route("/{id}", name="module_show")

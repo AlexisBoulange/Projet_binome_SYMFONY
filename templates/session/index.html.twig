@@ -28,7 +28,7 @@
 					{% if is_granted("ROLE_ADMIN") %}
 						<td>
 							<a class="uk-button-small uk-button-primary" href="{{ path('session_edit', {id: session.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
-							<a class="uk-button-small uk-button-danger" href="{{ path('session_delete', {id: session.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
+							<a class="uk-button-small uk-button-danger" href="{{ path('session_confirmation', {id: session.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
 						</td>
 					{% endif %}
 				</tr>

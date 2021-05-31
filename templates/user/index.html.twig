@@ -30,7 +30,7 @@
                     {% if is_granted("ROLE_ADMIN") %}
                         <td>
                             <a class="uk-button-small uk-button-primary" href="{{ path('user_edit', {id: user.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
-                            <a class="uk-button-small uk-button-danger" href="{{ path('user_delete', {id: user.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
+                            <a class="uk-button-small uk-button-danger" href="{{ path('user_confirmation', {id: user.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
                         </td>
                     {% endif %}
                 </tr>

@@ -61,7 +61,16 @@ class StagiaireController extends AbstractController
             'editMode' => $stagiaire->getId() !==null
         ]);
     }
-
+   /**
+     * @Route("/confirm/{id}", name="stagiaire_confirmation")
+     * @IsGranted("ROLE_ADMIN")
+    */
+    public function showConfirm(Stagiaire $stagiaire): Response
+    {
+        return $this->render('stagiaire/confirmation.html.twig', [
+            'stagiaire' => $stagiaire,
+        ]);
+    }
     /**
      * @Route("/delete/{id}", name="stagiaire_delete")
      * @IsGranted("ROLE_ADMIN")
@@ -76,7 +85,7 @@ class StagiaireController extends AbstractController
             'stagiaire' => $stagiaire,
         ]);
     }
-
+ 
     /**
      * @Route("/{id}", name="stagiaire_show")
      */
@@ -86,4 +95,5 @@ class StagiaireController extends AbstractController
             'stagiaire' => $stagiaire,
         ]);
     }
+
 }

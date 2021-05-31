@@ -60,7 +60,16 @@ class SessionController extends AbstractController
             'editMode' => $session->getId() !==null
         ]);
     }
-
+    /**
+     * @Route("/confirm/{id}", name="session_confirmation")
+     * @IsGranted("ROLE_ADMIN")
+    */
+    public function showConfirm(Session $session): Response
+    {
+        return $this->render('session/confirmation.html.twig', [
+            'session' => $session,
+        ]);
+    }
     /**
      * @Route("/delete/{id}", name="session_delete")
      * @IsGranted("ROLE_ADMIN")
@@ -71,7 +80,9 @@ class SessionController extends AbstractController
         $entityManager->remove($session);
         $entityManager->flush();
 
-        return $this->redirectToRoute('session_index');
+        return $this->render('session/delete.html.twig', [
+            'session' => $session,
+        ]);
     }
 
     /**

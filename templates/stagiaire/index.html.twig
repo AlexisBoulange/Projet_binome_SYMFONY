@@ -6,6 +6,11 @@
 {% block contenu %}
 	<section class="uk-container uk-margin-large-top uk-margin-large-bottom">
 		<h2 style="font-family: 'Nunito', sans-serif; font-weight: 700;">Stagiaires inscrits</h2>
+		{% if is_granted("ROLE_ADMIN") %}
+			<a class=" uk-button uk-button-primary " href="{{ path('stagiaire_add') }}">
+				+ Ajouter
+			</a>
+		{% endif %}
 		<table class="uk-table uk-table-divider uk-table-responsive" style="font-family: 'Nunito', sans-serif;">
 			<thead>
 				<tr>
@@ -27,17 +32,12 @@
 						{% if is_granted("ROLE_ADMIN") %}
 							<td>
 								<a class="uk-button-small uk-button-primary" href="{{ path('stagiaire_edit', {id: stagiaire.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
-								<a class="uk-button-small uk-button-danger" href="{{ path('stagiaire_delete', {id: stagiaire.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
+								<a class="uk-button-small uk-button-danger " href="{{ path('stagiaire_confirmation', {id: stagiaire.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
 							</td>
 						{% endif %}
 					</tr>
-				{% endfor %}
-			</tbody>
+				</tbody>
+			{% endfor %}
 		</table>
-		{% if is_granted("ROLE_ADMIN") %}
-			<a class=" uk-button uk-button-primary " href="{{ path('stagiaire_add') }}">
-				+ Ajouter
-			</a>
-		{% endif %}
 	</section>
 {% endblock %}

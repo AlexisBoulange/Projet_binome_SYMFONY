@@ -59,7 +59,16 @@ class FormationController extends AbstractController
             'editMode' => $formation->getId() !==null
         ]);
     }
-
+      /**
+     * @Route("/confirm/{id}", name="formation_confirmation")
+     * @IsGranted("ROLE_ADMIN")
+    */
+    public function showConfirm(Formation $formation): Response
+    {
+        return $this->render('formation/confirmation.html.twig', [
+            'formation' => $formation,
+        ]);
+    }
     /**
      * @Route("/delete/{id}", name="formation_delete")
      * @IsGranted("ROLE_ADMIN")
@@ -70,7 +79,9 @@ class FormationController extends AbstractController
         $entityManager->remove($formation);
         $entityManager->flush();
 
-        return $this->redirectToRoute('formation_index');
+        return $this->render('formation/delete.html.twig', [
+            'formation' => $formation,
+        ]);
     }
 
     /**

@@ -70,7 +70,16 @@ class UserController extends AbstractController
             'formEditUser' => $form->createView(),
         ]);
     }
-
+  /**
+     * @Route("/confirm/{id}", name="user_confirmation")
+     * @IsGranted("ROLE_ADMIN")
+    */
+    public function showConfirm(User $user): Response
+    {
+        return $this->render('user/confirmation.html.twig', [
+            'user' => $user,
+        ]);
+    }
     /**
      * @Route("/delete/{id}", name="user_delete")
      */
@@ -80,7 +89,9 @@ class UserController extends AbstractController
         $entityManager->remove($user);
         $entityManager->flush();
 
-        return $this->redirectToRoute('user_index');
+        return $this->render('user/delete.html.twig', [
+            'user' => $user,
+        ]);
     }
 
     /**
