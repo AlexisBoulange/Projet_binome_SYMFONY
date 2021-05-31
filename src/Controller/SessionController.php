@@ -29,6 +29,16 @@ class SessionController extends AbstractController
             'sessions' => $sessions
         ]);
     }
+
+    /**
+     * @Route("/calendar", name="session_calendar", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function calendar(): Response
+    {
+        return $this->render('session/calendar.html.twig');
+    }
+
     /**
      * @Route("/new", name="session_add")
      * @Route("/edit/{id}", name="session_edit")

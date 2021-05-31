@@ -1,0 +1,13 @@
+footer{
+    z-index : 600;
+    height: 30px;
+    align-items: center;
+}
+.fa-user {
+    font-size: 38px;
+    color: #212121;
+    margin-top: 10px;
+}
+.logout {
+    margin-bottom: 20px;
+}

@@ -1,2 +1,3 @@
-# calendar:
-#     resource: "@CalendarBundle/Resources/config/routing.yaml"
+# config/routes/calendar.yaml
+calendar:
+    resource: "@CalendarBundle/Resources/config/routing.yaml"
