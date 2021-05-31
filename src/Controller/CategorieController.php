@@ -59,7 +59,16 @@ class CategorieController extends AbstractController
             'editMode' => $categorie->getId() !==null
         ]);
     }
-
+/**
+     * @Route("/confirm/{id}", name="categorie_confirmation")
+     * @IsGranted("ROLE_ADMIN")
+    */
+    public function showConfirm(Categorie $categorie): Response
+    {
+        return $this->render('categorie/confirmation.html.twig', [
+            'categorie' => $categorie,
+        ]);
+    }
     /**
      * @Route("/delete/{id}", name="categorie_delete")
      * @IsGranted("ROLE_ADMIN")
@@ -70,7 +79,9 @@ class CategorieController extends AbstractController
         $entityManager->remove($categorie);
         $entityManager->flush();
 
-        return $this->redirectToRoute('categorie_index');
+        return $this->render('categorie/delete.html.twig', [
+            'categorie' => $categorie,
+        ]);
     }
 
     /**
