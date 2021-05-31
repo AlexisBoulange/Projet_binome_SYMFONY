@@ -7,8 +7,8 @@
 	<section id="modal1"class="uk-background-top-left uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-middle uk-flex-center" style="background-image: url(/img/home_background.jpg); height: 100vh;" uk-parallax="bgy: -200">
 		<div class="uk-alert uk-background-default">
 			<h2 class="uk-card-title uk-margin-top">
-				êtes vous sûr(e) de vouloir supprimer
-				{{ stagiaire.prenom ~ ' ' ~ stagiaire.nom }}?
+				Êtes vous sûr(e) de vouloir supprimer
+				{{ stagiaire.prenom ~ ' ' ~ stagiaire.nom }} ?
 			</h2>
 			<div class="uk-card-title uk-margin-top">
 			<a class="uk-button uk-button-primary" href="{{ path('stagiaire_delete', {id: stagiaire.id}) }}">OUI</a>
