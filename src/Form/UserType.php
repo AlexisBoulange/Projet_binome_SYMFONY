@@ -43,9 +43,10 @@ class UserType extends AbstractType
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
-                        'max' => 4096,
+                        'max' => 15,
+                        'minMessage' => 'Votre mot de passe doit comporter moins de {{ limit }} caractères',
                     ]),
                 ],
             ])
@@ -65,7 +66,7 @@ class UserType extends AbstractType
             ->add('envoyer', SubmitType::class, [
                 'attr' => ['class' => 'uk-button uk-button-secondary uk-margin-top'],
             ]);
-        ;
+        
     }
 
     public function configureOptions(OptionsResolver $resolver)

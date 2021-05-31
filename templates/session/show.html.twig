@@ -22,19 +22,15 @@
 					<h4 class="uk-margin-large-left">Liste des modules:</h4>       
 					<p>
 						{% for programmer in session.programmers %}
-							<a href="{{ path('module_show', {id: programmer.id}) }}" class="uk-margin-large-left">{{ programmer.modules.libelle }}:</a>
-							heures.<br>
+							<a href="{{ path('module_show', {id: programmer.id}) }}" class="uk-margin-large-left">{{ programmer.modules.libelle }} :</a>
+							{{ programmer.duree }} jours.<br>
 						{% endfor %}
 					</p> 
 					{% if is_granted("ROLE_ADMIN") %}
                         <a class=" uk-button uk-button-primary " href="{{ path('add_duree', {id: session.id}) }}">
                             + Ajouter
                         </a>
-                    {% endif %}                
-                        {% if is_granted("ROLE_ADMIN") %}
-					        <a class=" uk-button uk-button-primary uk-margin-large-left" href="{{ path('session_add') }}" uk-icon="icon: file-plus" title="Ajouter"></a>
-                            <a class=" uk-button uk-button-danger uk-margin-large-left" href="{{ path('session_add') }}" uk-icon="icon: file-trash"title="Supprimer"></a>
-				        {% endif %}
+                    {% endif %}
 				</div>
 			</div>
 		</div>
