@@ -32,7 +32,6 @@ class SessionController extends AbstractController
 
     /**
      * @Route("/calendar", name="session_calendar", methods={"GET"})
-     * @IsGranted("ROLE_USER")
      */
     public function calendar(): Response
     {
@@ -46,22 +45,29 @@ class SessionController extends AbstractController
      */
     public function new(Request $request, Session $session = null): Response
     {
-        if (!$session) {
             $session = new Session();
-        }
 
         $form = $this->createForm(SessionType::class, $session);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $session = $form->getData();
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($session);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('session_index');
+            //On récupère nos date de début et de fin
+            $dateD = $form->get('dateD')->getData();
+            $dateF = $form->get('dateF')->getData();
+            
+            //Si la date de début est supérieure à la date de fin on envoie un message d'erreur
+            if($dateD > $dateF){
+                $this->addFlash('warning', 'La date de fin ne peut pas finir avant la date de début !');
+            }else{    
+                $session = $form->getData();
+                
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($session);
+                $entityManager->flush();
+                
+                return $this->redirectToRoute('session_index');
+            }
         }
 
         return $this->render('session/new.html.twig', [
@@ -101,6 +107,7 @@ class SessionController extends AbstractController
      */
     public function addModuleToSession(Request $request, Session $session, EntityManagerInterface $entityManager){
 
+        $id = $session->getId();
 
         $form = $this->createForm('App\Form\AteliersType', $session);
 
@@ -113,7 +120,7 @@ class SessionController extends AbstractController
             $entityManager->persist($session);
             $entityManager->flush();
 
-            return $this->redirectToRoute('session_index');
+            return $this->redirectToRoute('session_show', ['id' => $id]);
         }
 
         return $this->render('programmer/addDuree.html.twig', [

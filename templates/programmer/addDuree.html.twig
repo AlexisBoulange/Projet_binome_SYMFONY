@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter/modifier une duree
+{% block title %}Ajouter/modifier un module
 {% endblock %}
 
 {% block contenu %}
 	<section class="uk-container uk-margin-large-top uk-margin-large-bottom">
 		{% if editMode %}
-			<h2>Modifier une duree</h2>
+			<h2>Ajouter un module à la session</h2>
 		{% else %}
-			<h2>Ajouter une duree</h2>
+			<h2>Ajouter un module à la session</h2>
 		{% endif %}
 
 		{{ form_start(form) }}
