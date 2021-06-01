@@ -1,13 +1,81 @@
-footer{
-    z-index : 600;
-    height: 30px;
-    align-items: center;
-}
+/*-------------------------------------------------------------
+--------------------------HEADER------------------------------
+-------------------------------------------------------------*/
+
 .fa-user {
     font-size: 38px;
     color: #212121;
     margin-top: 10px;
 }
+
+.fa-user:hover{
+    color: #1E87F0;
+}
+
 .logout {
     margin-bottom: 20px;
+}
+
+.login-btn:hover{
+    background-color:#1E87F0;  
+}
+
+nav a{
+    border-bottom:3px solid white;  
+    font-family: 'Nunito', sans-serif; font-size:18px;
+}
+nav a:hover{
+    border-bottom:3px solid #1E87F0;  
+}
+
+
+/*-------------------------------------------------------------
+--------------------------TITLES/BUTTONS------------------------------
+-------------------------------------------------------------*/
+
+.uk-heading-large,
+.uk-heading-small,
+h1,
+h2,
+.register-btn{
+    font-family: 'Nunito', sans-serif;
+}
+
+.uk-heading-large,
+.uk-heading-small
+{
+    color: #fafafa;
+    
+}
+
+.uk-heading-large{
+    font-weight:700;
+}
+
+
+
+.fa-calendar-alt{
+    font-size:18px;
+    font-weight:300;
+}
+
+/*-------------------------------------------------------------
+--------------------------BACKGROUND------------------------------
+-------------------------------------------------------------*/
+
+.uk-background-cover{
+    background-image: url(/img/home_background.jpg); 
+    height: 100vh;
+}
+
+
+
+/*-------------------------------------------------------------
+--------------------------FOOTER------------------------------
+-------------------------------------------------------------*/
+
+footer{
+    z-index : 600;
+    height: 30px;
+    align-items: center;
 }

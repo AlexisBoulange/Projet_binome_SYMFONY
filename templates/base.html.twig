@@ -24,16 +24,16 @@
 			    </a>
 				<div class="uk-margin-medium-top uk-margin-large-right">
 					{% if is_granted("ROLE_USER") %}
-				    	<a class="uk-margin-right"  href="{{ path('user_show', {id: app.user.id}) }}"><i class="far fa-user"></i></a>						
-                		<a class="logout uk-button uk-button-secondary" href="{{ path('app_logout') }}">Se déconnecter</a>
+				    	{{ app.user.pseudo }} <a class="uk-margin-right" href="{{ path('user_show', {id: app.user.id}) }}"><i class="far fa-user"></i></a>						
+                		<a class="logout uk-button uk-button-secondary login-btn" href="{{ path('app_logout') }}">Se déconnecter</a>
 					{% else %}
-						<a class="uk-active uk-link-heading" style="font-family: 'Nunito', sans-serif; font-size:16px;" href="{{ path('app_register') }}">S'enregister</a>
-						<a class="uk-button uk-button-secondary uk-margin-left" href="{{ path('app_login') }}">Connexion</a>					
+						<a class="uk-active uk-link-heading register-btn" href="{{ path('app_register') }}">S'enregister</a>
+						<a class="uk-button uk-button-secondary uk-margin-left login-btn" href="{{ path('app_login') }}">Connexion</a>					
                     {% endif %}	
 				</div>
 			</header>
 			<div class="uk-margin-medium-top">
-				<nav class="uk-navbar-nav uk-flex-around uk-margin-small-bottom" style="font-family: 'Nunito', sans-serif; font-size:18px;">
+				<nav class="uk-navbar-nav uk-flex-around uk-margin-small-bottom">
 					<a class="uk-active uk-link-heading uk-text-bold" href="{{ path('formation_index') }}">Formations</a>
 					<a class="uk-active uk-link-heading uk-text-bold" href="{{ path('session_index') }}">Sessions</a>
 					    
@@ -59,6 +59,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/uikit@3.6.21/dist/js/uikit.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.21/dist/js/uikit-icons.min.js"></script>
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<script src="app.js"></script>
 	{% endblock %}
 </html>
 

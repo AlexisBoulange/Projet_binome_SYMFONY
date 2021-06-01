@@ -5,12 +5,11 @@
 
 {% block contenu %}
 	<section class="uk-container uk-flex uk-margin-large-top uk-margin-large-bottom">
-		<img data-src="/img/team.jpg" width="700" height="500" alt="Ceci est une image" uk-img>
+		<img data-src="{{ formation.img }}" width="700" height="500" alt="Ceci est une image" uk-img>
 		<article class="uk-article uk-margin-left">
 			<h1 class="uk-article-title" style="font-family: 'Nunito', sans-serif; font-weight: 700;">{{ formation.nom}}</h1>
 			<p class="uk-text-lead">{{formation.descriptif}}</p>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<a class="uk-button uk-button-primary" href="#">Inscription</a>
 		</article>
 	</section>
 {% endblock %}

@@ -34,6 +34,11 @@ class Formation
      */
     private $sessions;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $img;
+
     public function __construct()
     {
         $this->sessions = new ArrayCollection();
@@ -101,5 +106,17 @@ class Formation
     public function __toString()
     {
         return (string) $this->getNom();
+    }
+
+    public function getImg(): ?string
+    {
+        return $this->img;
+    }
+
+    public function setImg(?string $img): self
+    {
+        $this->img = $img;
+
+        return $this;
     }
 }

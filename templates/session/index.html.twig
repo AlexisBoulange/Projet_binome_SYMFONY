@@ -6,7 +6,10 @@
 {% block contenu %}
 	<section class="uk-container uk-margin-large-top uk-margin-large-bottom">
 		<h2 style="font-family: 'Nunito', sans-serif; font-weight: 700;">Sessions disponibles</h2> 
-		<a class="uk-button uk-button-primary" href="{{ path('session_calendar') }}">Voir le calendrier</a>
+		<a class="uk-button uk-button-secondary" href="{{ path('session_calendar') }}" ><span uk-icon="calendar"></span> Voir le calendrier </a>
+		{% if is_granted("ROLE_ADMIN") %}
+			<a class=" uk-button uk-button-primary " href="{{ path('session_add') }}"> + Ajouter </a>
+		{% endif %}
 		<table class="uk-table uk-table-divider uk-table-responsive" style="font-family: 'Nunito', sans-serif;">
 			<thead>
 				<tr>
@@ -36,9 +39,7 @@
 			{% endfor %}
 			<tbody></tbody>
 		</table>
-		{% if is_granted("ROLE_ADMIN") %}
-			<a class=" uk-button uk-button-primary " href="{{ path('session_add') }}">+ Ajouter</a>
-		{% endif %}
+
 	</section>
 {% endblock %}
 
