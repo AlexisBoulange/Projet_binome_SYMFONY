@@ -48,6 +48,7 @@ class SessionType extends AbstractType
                 'entry_options' => [
                     'label' => "Choisir un stagiaire",
                     'class' => Stagiaire::class,
+                    'attr' => ['class' => 'uk-select'],
                 ],
                 'by_reference' => false,
                 'required' => false,

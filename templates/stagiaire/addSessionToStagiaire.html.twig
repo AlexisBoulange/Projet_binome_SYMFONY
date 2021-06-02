@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter/modifier un stagiaire{% endblock %}
+
+{% block contenu %}
+<section class="uk-container uk-margin-large-top uk-margin-large-bottom">
+   {% if editMode %}
+      <h2>Modifier un stagiaire</h2>
+   {% else %}
+      <h2>Ajouter un stagiaire</h2>
+   {% endif %}
+      {{ form_start(form) }}
+         {% for message in app.flashes('warning') %}
+            <div class="alert alert-warning"> 
+                  {{message}}
+            </div>
+         {% endfor %} 
+         <ul id="sessions" data-prototype="{{ form_row(form.sessions.vars.prototype)|e }}">
+            {% for session in form.sessions %}
+               <li class="session">
+               {{ form_row(session) }}
+               {# {{ form_row(session.id) }} #}
+               </li>
+            {% endfor %}
+         </ul>
+			{{ form_row(form.envoyer) }}
+		{{ form_end(form) }}
+</section>
+{% endblock %}
+{% block javascripts %}
+   {{ parent() }}
+   <script src="/js/collectionHandlerAddSession.js"></script>
+{% endblock %}

@@ -35,7 +35,7 @@
 						{% endfor %}
 					{% endif %}
 					{% if is_granted("ROLE_ADMIN") %}
-						<a class=" uk-button uk-button-default add-btn" href="{{ path('stagiaire_add') }}">Ajouter
+						<a class=" uk-button uk-button-default add-btn" href="{{ path('add_session_stagiaire', {id: stagiaire.id}) }}">Ajouter
 							{{ stagiaire.prenom ~ ' ' ~ stagiaire.nom }}
 							à une session</a>
 					{% endif %}

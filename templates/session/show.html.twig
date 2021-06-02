@@ -16,13 +16,13 @@
 					<p>Date de fin:
 						<strong>{{ session.dateF | date('d-m-Y')}}</strong>
 					</p>
-					<p class="uk-margin-xlarge-bottom">Nombre de places:
-						<strong>{{ session.nbPlaces}}</strong>
+					<p class="uk-margin-xlarge-bottom">Nombre de places disponibles:
+						<strong>{{ session.nbPlaces - session.stagiaire | length}}</strong>
 					</p>
 					<h4 class="uk-margin-large-left">Liste des modules:</h4>       
 					<p>
 						{% for programmer in session.programmers %}
-							<a href="{{ path('module_show', {id: programmer.id}) }}" class="uk-margin-large-left">{{ programmer.modules.libelle }} :</a>
+							<a href="{{ path('module_show', {id: programmer.modules.id}) }}" class="uk-margin-large-left">{{ programmer.modules.libelle }} :</a>
 							{{ programmer.duree }} jours.<br>
 						{% endfor %}
 					</p> 
