@@ -1,8 +1,46 @@
 *{
     box-sizing: border-box;
 }
-
-
+.alert-warning{
+    color: crimson;
+    font-size: large;
+}
+#gestionDurees, #stagiaires, #sessions{
+  list-style:none;
+  padding: 0;
+}
+.add_collection_link{
+    background-color: #1e87f0;
+    color:#fafafa;
+    border-radius: 24px;
+    padding: 12px;
+    border: none;
+    margin-top: 5px;
+    text-decoration: none;
+}
+.add_collection_link:hover{
+  background-color: #fafafa;
+  color: #1e87f0;
+  padding: 11px;
+  border: 1px solid #1e87f0 ;
+  cursor: pointer;
+}
+.del_collection_link{
+  background-color: red;
+  color:#fafafa;
+  border-radius: 24px;
+  padding: 12px;
+  border: none;
+  text-decoration: none;
+  margin: 10px 0 20px 0;
+}
+.del_collection_link:hover{
+  background-color: #fafafa;
+  color: red;
+  padding: 11px;
+  border: 1px solid red ;
+  cursor: pointer;
+}
 
 /*-------------------------------------------------------------
 --------------------------HEADER------------------------------

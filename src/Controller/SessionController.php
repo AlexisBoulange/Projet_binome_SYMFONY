@@ -45,7 +45,9 @@ class SessionController extends AbstractController
      */
     public function new(Request $request, Session $session = null): Response
     {
+        if(!$session){
             $session = new Session();
+        }
 
         $form = $this->createForm(SessionType::class, $session);
 
@@ -58,7 +60,12 @@ class SessionController extends AbstractController
             
             //Si la date de début est supérieure à la date de fin on envoie un message d'erreur
             if($dateD > $dateF){
-                $this->addFlash('warning', 'La date de fin ne peut pas finir avant la date de début !');
+                $this->addFlash('warningDates', 'La date de fin ne peut pas finir avant la date de début !');
+
+                //On vérifie que le nombre de place disponible n'est pas dépassé 
+            }elseif($session->getNbPlaces() < count($form->get('stagiaire')->getData())){
+                $this->addFlash('warningStagiaires', 'Vous ne pouvez pas inscrire plus de '. $session->getNbPlaces(). ' stagiaires pour cette session');
+            
             }else{    
                 $session = $form->getData();
                 
