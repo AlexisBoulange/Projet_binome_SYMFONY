@@ -15,8 +15,8 @@
 					{{ app.user.dateEntree | date('d-m-Y') }}</p>
 				<p class="uk-margin-xlarge-bottom">Mail :
 					{{ app.user.email }}</p>
-                            <a class="uk-button-small uk-button-primary" href="{{ path('user_edit', {id: app.user.id}) }}" uk-icon="icon: file-edit" title="Modifier">Modifier mes informations</a>
-                            <a class="uk-button-small uk-button-danger" href="{{ path('user_delete', {id: user.id}) }}" uk-icon="icon: trash" title="Supprimer">Supprimer mon profil</a>
+                            <a class="uk-button-small uk-button-default add-btn" href="{{ path('user_edit', {id: app.user.id}) }}" uk-icon="icon: file-edit" title="Modifier">Modifier mes informations</a>
+                            <a class="uk-button-small uk-button-default delete-btn" href="{{ path('user_delete', {id: user.id}) }}" uk-icon="icon: trash" title="Supprimer">Supprimer mon profil</a>
 				</div>
                 
 			</div>

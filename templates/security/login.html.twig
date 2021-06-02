@@ -5,7 +5,7 @@
 
 {% block contenu %}
 	<div class="uk-background-top-left uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-middle uk-flex-center"  uk-parallax="bgy: -200">
-		<section class="uk-container">
+		<section class="uk-container uk-background-default">
 			<form method="post">
 				{% if error %}
 					<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -19,10 +19,10 @@
 					</div>
 				{% endif %}
 				<div>
-					<h1 class="h3 mb-3 font-weight-normal" style="color: #fafafa; font-family: 'Nunito', sans-serif; font-weight: 700;">Connexion</h1>
-					<label style="color: #fafafa;" for="inputPseudo">Pseudo</label>
+					<h1 class="h3 mb-3 font-weight-normal uk-margin-top " >Connexion</h1>
+					<label for="inputPseudo">Pseudo</label>
 					<input class="uk-input uk-margin-bottom" type="text" value="{{ last_username }}" name="pseudo" id="inputPseudo" autocomplete="pseudo" required autofocus>
-					<label style="color: #fafafa;" for="inputPassword">Mot de passe</label>
+					<label for="inputPassword">Mot de passe</label>
 					<input class="uk-input" type="password" name="password" id="inputPassword" autocomplete="current-password" required>
 
 					<input
@@ -43,8 +43,8 @@
 						Se connecter
 					</button>
 				</div>
+			    <a href="{{ path('forgotten_password') }}" class="uk-margin-bottom uk-align-center uk-flex uk-flex-center"> Mot de passe oublié ?</a>
 			</form>
-			<a href="{{ path('forgotten_password') }}"> Mot de passe oublié ?</a>
 		</section>
 	</div>
 {% endblock %}

@@ -39,8 +39,8 @@ class RegistrationFormType extends AbstractType
                 // this is read and encoded in the controller
                 'type' => PasswordType::class,
                 'first_options' => [
-                    'label' => 'Mot de passe',
-                    'attr' => ['class' => 'uk-input'],
+                    'label' => 'Mot de passe (min. 6 caratères)',
+                    'attr' => ['class' => 'uk-input'],                   
                 ],
                 'second_options' => [
                     'label' => 'Répétez le mot de passe',

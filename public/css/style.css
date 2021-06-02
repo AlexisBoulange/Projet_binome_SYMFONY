@@ -1,33 +1,37 @@
+.white {
+  color: #fafafa;
+}
+
 /*-------------------------------------------------------------
 --------------------------HEADER------------------------------
 -------------------------------------------------------------*/
 
 .fa-user {
-    font-size: 38px;
-    color: #212121;
-    margin-top: 10px;
+  font-size: 38px;
+  color: #212121;
+  margin-top: 10px;
 }
 
-.fa-user:hover{
-    color: #1E87F0;
+.fa-user:hover {
+  color: #1e87f0;
 }
 
 .logout {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
-.login-btn:hover{
-    background-color:#1E87F0;  
+.login-btn:hover {
+  background-color: #1e87f0;
 }
 
-nav a{
-    border-bottom:3px solid white;  
-    font-family: 'Nunito', sans-serif; font-size:18px;
+nav a {
+  border-bottom: 3px solid white;
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
 }
-nav a:hover{
-    border-bottom:3px solid #1E87F0;  
+nav a:hover {
+  border-bottom: 3px solid #1e87f0;
 }
-
 
 /*-------------------------------------------------------------
 --------------------------TITLES/BUTTONS------------------------------
@@ -35,47 +39,73 @@ nav a:hover{
 
 .uk-heading-large,
 .uk-heading-small,
+table,
 h1,
 h2,
-.register-btn{
-    font-family: 'Nunito', sans-serif;
+.register-btn,
+.back-btn {
+  font-family: "Nunito", sans-serif;
 }
 
 .uk-heading-large,
-.uk-heading-small
-{
-    color: #fafafa;
-    
+.uk-heading-small {
+  color: #fafafa;
 }
 
-.uk-heading-large{
-    font-weight:700;
+.uk-heading-large {
+  font-weight: 700;
 }
 
+.fa-calendar-alt {
+  font-size: 18px;
+  font-weight: 300;
+}
 
+.back-btn {
+  font-weight: 700;
+  color: #1e87f0;
+  border-radius: 24px;
+}
 
-.fa-calendar-alt{
-    font-size:18px;
-    font-weight:300;
+.add-btn{
+    background-color: #1e87f0;
+    color:#fafafa;
+    border-radius: 24px;
+}
+
+.delete-btn{
+    background-color: red;
+    color:#fafafa;
+    border-radius: 24px;
+}
+
+.calendar-btn{
+    background-color: #1a1a1b;
+    color:#fafafa;
+    border-radius: 24px;
 }
 
 /*-------------------------------------------------------------
 --------------------------BACKGROUND------------------------------
 -------------------------------------------------------------*/
 
-.uk-background-cover{
-    background-image: url(/img/home_background.jpg); 
-    height: 100vh;
+.uk-background-cover {
+  background-image: url(/img/home_background.jpg);
+  height: 100vh;
 }
 
+.uk-background-default {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 22px;
+}
 
 
 /*-------------------------------------------------------------
 --------------------------FOOTER------------------------------
 -------------------------------------------------------------*/
 
-footer{
-    z-index : 600;
-    height: 30px;
-    align-items: center;
+footer {
+  z-index: 600;
+  height: 30px;
+  align-items: center;
 }

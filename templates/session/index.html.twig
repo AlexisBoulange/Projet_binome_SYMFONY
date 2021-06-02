@@ -6,9 +6,9 @@
 {% block contenu %}
 	<section class="uk-container uk-margin-large-top uk-margin-large-bottom">
 		<h2 style="font-family: 'Nunito', sans-serif; font-weight: 700;">Sessions disponibles</h2> 
-		<a class="uk-button uk-button-secondary" href="{{ path('session_calendar') }}" ><span uk-icon="calendar"></span> Voir le calendrier </a>
+		<a class="uk-button uk-button-default calendar-btn" href="{{ path('session_calendar') }}" ><span uk-icon="calendar"></span> Voir le calendrier </a>
 		{% if is_granted("ROLE_ADMIN") %}
-			<a class=" uk-button uk-button-primary " href="{{ path('session_add') }}"> + Ajouter </a>
+			<a class=" uk-button uk-button-default add-btn " href="{{ path('session_add') }}"> + Ajouter </a>
 		{% endif %}
 		<table class="uk-table uk-table-divider uk-table-responsive" style="font-family: 'Nunito', sans-serif;">
 			<thead>
@@ -31,8 +31,8 @@
 					<td>{{ session.nbPlaces - session.stagiaire | length}}</td>
 					{% if is_granted("ROLE_ADMIN") %}
 						<td>
-							<a class="uk-button-small uk-button-primary" href="{{ path('session_edit', {id: session.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
-							<a class="uk-button-small uk-button-danger" href="{{ path('session_confirmation', {id: session.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
+							<a class="uk-button-small uk-button-default add-btn" href="{{ path('session_edit', {id: session.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
+							<a class="uk-button-small uk-button-default delete-btn" href="{{ path('session_confirmation', {id: session.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
 						</td>
 					{% endif %}
 				</tr>

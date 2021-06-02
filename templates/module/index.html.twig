@@ -6,6 +6,9 @@
 {% block contenu %}
     <section class="uk-container uk-margin-large-top uk-margin-large-bottom">
     <h2 style="font-family: 'Nunito', sans-serif; font-weight: 700;" >Liste des modules</h2>
+    {% if is_granted("ROLE_ADMIN") %}
+        <a class=" uk-button uk-button-default add-btn " href="{{ path('module_add') }}"> + Ajouter </a>
+    {% endif %}
     <table class="uk-table uk-table-divider uk-table-responsive" style="font-family: 'Nunito', sans-serif">
         <thead>
             <tr>
@@ -15,21 +18,19 @@
         </thead>
             {% for module in modules %}
                <tr> 
-                  <td>{{ module.libelle }}</td>
+                  <td><a href="{{path('module_show', {id: module.id})}}">{{ module.libelle }}</a></td>
                   <td>{{ module.categorie.nom }}</td>
                 {% if is_granted("ROLE_ADMIN") %}
 						<td>
-							<a class="uk-button-small uk-button-primary" href="{{ path('module_edit', {id: module.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
-							<a class="uk-button-small uk-button-danger" href="{{ path('module_confirmation', {id: module.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
+							<a class="uk-button-small uk-button-default add-btn" href="{{ path('module_edit', {id: module.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
+							<a class="uk-button-small uk-button-default delete-btn" href="{{ path('module_confirmation', {id: module.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
 						</td>
 					{% endif %}
                 </tr>
             {% endfor %}
         <tbody>
     </table>
-    {% if is_granted("ROLE_ADMIN") %}
-        <a class=" uk-button uk-button-primary " href="{{ path('module_add') }}"> + Ajouter </a>
-    {% endif %}
+
     </section>
     
 {% endblock %}

@@ -9,6 +9,11 @@
 {% block contenu %}
 	<section class="uk-container uk-margin-large-top uk-margin-large-bottom">
 		<h2 style="font-family: 'Nunito', sans-serif; font-weight: 700;">Formations</h2>
+		{% if is_granted("ROLE_ADMIN") %}
+			<a class=" uk-button uk-button-default add-btn " href="{{ path('formation_add') }}">
+				+ Ajouter
+			</a>
+		{% endif %}
 		<table class="uk-table uk-table-divider uk-table-responsive">
 			<thead>
 				<tr>
@@ -24,22 +29,24 @@
 					</td>
 					<td>{{ formation.descriptif }}</td>
 					<td>
-						<a href="{{ path('session_index') }}">{{ formation.sessions | length }}</a>
+					{% for session in formation.sessions %}
+					<ul>
+						<li>
+						    <a href="{{ path('session_show', {id: session.id}) }}">Du {{ session.dateD | date('d-m-Y') }} au {{ session.dateF | date('d-m-Y') }}</a> 
+						</li>			
+					</ul>
+					{% endfor %}
 					</td>
 					{% if is_granted("ROLE_ADMIN") %}
 						<td>
-							<a class="uk-button-small uk-button-primary" href="{{ path('formation_edit', {id: formation.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
-							<a class="uk-button-small uk-button-danger" href="{{ path('formation_confirmation', {id: formation.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
+							<a class="uk-button-small uk-button-default add-btn" href="{{ path('formation_edit', {id: formation.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
+							<a class="uk-button-small uk-button-default delete-btn" href="{{ path('formation_confirmation', {id: formation.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
 						</td>
 					{% endif %}
 				</tr>
 			{% endfor %}
 			<tbody></tbody>
 		</table>
-		{% if is_granted("ROLE_ADMIN") %}
-			<a class=" uk-button uk-button-primary " href="{{ path('formation_add') }}">
-				+ Ajouter
-			</a>
-		{% endif %}
+
 	</section>
 {% endblock %}

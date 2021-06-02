@@ -4,11 +4,11 @@
 {% endblock %}
 
 {% block contenu %}
-	<section class="uk-card">
+	<main class="uk-card">
 		<div class="uk-background-cover uk-background-top-left  uk-height-medium uk-panel uk-flex uk-flex-middle uk-flex-center" uk-parallax="bgy: -200">
-			<div class="uk-container uk-background-default">
-				<h1 style="font-family: 'Nunito', sans-serif;" class="uk-card-title uk-margin-top">Détails session</h1>
-				<h2 style="font-family: 'Nunito', sans-serif; font-weight: 700;">{{ session.formation }}</h2>
+			<section class="uk-container uk-background-default">
+				<h1 class="uk-card-title uk-margin-top">Détails session</h1>
+				<h2>{{ session.formation }}</h2>
 				<div class="uk-column-1-2">
 					<p>Date de Début:
 						<strong>{{ session.dateD | date('d-m-Y') }}</strong>
@@ -27,14 +27,14 @@
 						{% endfor %}
 					</p> 
 					{% if is_granted("ROLE_ADMIN") %}
-                        <a class=" uk-button uk-button-primary " href="{{ path('add_duree', {id: session.id}) }}">
+                        <a class=" uk-margin-large-left uk-button uk-button-default add-btn" href="{{ path('add_duree', {id: session.id}) }}">
                             + Ajouter
                         </a>
                     {% endif %}
 				</div>
-			</div>
+			</section>
 		</div>
-	</section>
+	</main>
 {% endblock %}
 {% block javascripts %}
 	{{ parent() }}
