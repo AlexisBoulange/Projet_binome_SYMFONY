@@ -33,9 +33,8 @@ class SessionType extends AbstractType
             ])
             ->add('nbPlaces', NumberType::class, [
                 'label' => 'Nombre de places', 
-                'attr' => ['min' => 1],
                 'html5' => true,
-                'attr' => ['class' => 'uk-input'],
+                'attr' => ['class' => 'uk-input', 'min' => 1],
             ])
             ->add('formation', EntityType::class, [
                 'label' => 'Formation',

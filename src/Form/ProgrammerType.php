@@ -17,10 +17,13 @@ class ProgrammerType extends AbstractType
     {
         $builder
             ->add('duree', IntegerType::class, [
+                'label' => 'Durée (en jours)',
+                'attr' => ['class' => 'uk-input', 'min' => 1],
             ])
             ->add('modules', EntityType::class, [
                 'class' => Module::class,
-                'label' => false,
+                'label' => 'Module',
+                'attr' => ['class' => 'uk-select'],
                 'query_builder' => function (EntityRepository $er){
                     return $er->createQueryBuilder('m')
                     ->orderBy('m.libelle', 'ASC');

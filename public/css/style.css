@@ -1,5 +1,9 @@
-.white {
-  color: #fafafa;
+*{
+    box-sizing: border-box;
+}
+.alert-warning{
+    color: crimson;
+    font-size: large;
 }
 
 /*-------------------------------------------------------------

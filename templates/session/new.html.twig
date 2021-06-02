@@ -12,7 +12,12 @@
       {{ form_start(formAddSession) }}
 			{{ form_row(formAddSession.formation) }}
 			{{ form_row(formAddSession.dateD) }}
-			{{ form_row(formAddSession.dateF) }}     
+			{{ form_row(formAddSession.dateF) }}    
+         {% for message in app.flashes('warning') %}
+            <div class="alert alert-warning"> 
+                  {{message}}
+            </div>
+         {% endfor %} 
 			{{ form_row(formAddSession.nbPlaces) }}
          <ul id="stagiaires" data-prototype="{{ form_row(formAddSession.stagiaire.vars.prototype)|e }}">
             {% for stagiaire in formAddSession.stagiaire %}
