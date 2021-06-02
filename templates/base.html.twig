@@ -48,12 +48,18 @@
                 	{% endif %}					
 				</nav>
 			</div>
+			{% for message in app.flashes('success') %}
+                <div class="alert alert-success uk-alert uk-flex uk-flex-center">
+                    {{ message }}<span uk-icon="check"></span>
+                </div>
+            {% endfor %}
 			{% block contenu %}{% endblock %}
 			<footer class="uk-flex uk-flex-center uk-background-secondary uk-position-fixed uk-position-bottom">
-			    <small> All rights reserved 2021 Alexis Boulange & Martin Bessey</small>
+			    <small> All rights reserved 2021 Alexis Boulangé & Martin Bessey</small>
 			</footer>
 		{% endblock %}
 	</body>		
+
 	{% block javascripts %}
 		{#{{ encore_entry_script_tags('app') }}#}
 		<script src="https://cdn.jsdelivr.net/npm/uikit@3.6.21/dist/js/uikit.min.js"></script>

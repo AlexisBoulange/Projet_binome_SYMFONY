@@ -96,9 +96,10 @@ class SessionController extends AbstractController
         $entityManager->remove($session);
         $entityManager->flush();
 
-        return $this->render('session/delete.html.twig', [
-            'session' => $session,
-        ]);
+       //message add flash de confirmation
+       $this->addFlash('success', 'La session a bien été supprimée!');
+
+       return $this->redirectToRoute('session_index');
     }
 
     /**

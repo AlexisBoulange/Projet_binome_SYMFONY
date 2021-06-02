@@ -79,9 +79,10 @@ class FormationController extends AbstractController
         $entityManager->remove($formation);
         $entityManager->flush();
 
-        return $this->render('formation/delete.html.twig', [
-            'formation' => $formation,
-        ]);
+        //message add flash de confirmation
+        $this->addFlash('success', 'La formation a bien été supprimée!');
+
+        return $this->redirectToRoute('formation_index');
     }
 
     /**

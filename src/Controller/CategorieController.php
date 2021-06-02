@@ -79,9 +79,10 @@ class CategorieController extends AbstractController
         $entityManager->remove($categorie);
         $entityManager->flush();
 
-        return $this->render('categorie/delete.html.twig', [
-            'categorie' => $categorie,
-        ]);
+       //message add flash de confirmation
+       $this->addFlash('success', 'La catégorie a bien été supprimée!');
+
+       return $this->redirectToRoute('categorie_index');
     }
 
     /**

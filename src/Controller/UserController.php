@@ -89,11 +89,11 @@ class UserController extends AbstractController
         $entityManager->remove($user);
         $entityManager->flush();
 
-        return $this->render('user/delete.html.twig', [
-            'user' => $user,
-        ]);
-    }
+       //message add flash de confirmation
+       $this->addFlash('success', 'Un utilisateur a bien été supprimé!');
 
+       return $this->redirectToRoute('user_index');
+    }
     /**
      * @Route("/{id}", name="user_show")
      */

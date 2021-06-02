@@ -21,11 +21,11 @@
                   <td><a href="{{path('module_show', {id: module.id})}}">{{ module.libelle }}</a></td>
                   <td>{{ module.categorie.nom }}</td>
                 {% if is_granted("ROLE_ADMIN") %}
-						<td>
-							<a class="uk-button-small uk-button-default add-btn" href="{{ path('module_edit', {id: module.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
-							<a class="uk-button-small uk-button-default delete-btn" href="{{ path('module_confirmation', {id: module.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
-						</td>
-					{% endif %}
+				    <td>
+						<a class="uk-button-small uk-button-default add-btn" href="{{ path('module_edit', {id: module.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
+						<a class="uk-button-small uk-button-default delete-btn" href="{{ path('module_confirmation', {id: module.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
+					</td>
+				{% endif %}
                 </tr>
             {% endfor %}
         <tbody>

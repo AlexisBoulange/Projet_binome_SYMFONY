@@ -79,12 +79,11 @@ class ModuleController extends AbstractController
         $entityManager->remove($module);
         $entityManager->flush();
 
-        return $this->render('module/delete.html.twig', [
-            'module' => $module,
-        ]);
-    }
-    
+       //message add flash de confirmation
+        $this->addFlash('success', 'Le module a bien été supprimé!');
 
+        return $this->redirectToRoute('module_index');
+    }
     /**
      * @Route("/{id}", name="module_show")
      */

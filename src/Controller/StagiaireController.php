@@ -81,9 +81,10 @@ class StagiaireController extends AbstractController
         $entityManager->remove($stagiaire);
         $entityManager->flush();
 
-        return $this->render('stagiaire/delete.html.twig', [
-            'stagiaire' => $stagiaire,
-        ]);
+       //message add flash de confirmation
+       $this->addFlash('success', 'Le stagiaire a bien été supprimé!');
+
+       return $this->redirectToRoute('stagiaire_index');
     }
  
     /**
