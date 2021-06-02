@@ -1,25 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profil {{ app.user.pseudo }}
+{% block title %}Profil
+	{{ app.user.pseudo }}
 {% endblock %}
 
 {% block contenu %}
-	<section class="uk-card">
-		<div class="uk-background-top-left uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-middle uk-flex-center" uk-parallax="bgy: -200">
-			<div class="uk-container uk-background-default">
-			<h2 style="font-family: 'Nunito', sans-serif; font-weight: 700;" class="uk-card-title uk-margin-top">{{ app.user.prenom ~ ' ' ~ app.user.nom }}</h2>
-			<div class="uk-column-1-2">
-				<p>Avatar :
-					{{ app.user.avatar }}</p>
-				<p>Date d'inscription :
-					{{ app.user.dateEntree | date('d-m-Y') }}</p>
-				<p class="uk-margin-xlarge-bottom">Mail :
-					{{ app.user.email }}</p>
-                            <a class="uk-button-small uk-button-default add-btn" href="{{ path('user_edit', {id: app.user.id}) }}" uk-icon="icon: file-edit" title="Modifier">Modifier mes informations</a>
-                            <a class="uk-button-small uk-button-default delete-btn" href="{{ path('user_delete', {id: user.id}) }}" uk-icon="icon: trash" title="Supprimer">Supprimer mon profil</a>
+	<main class="uk-background-top-left uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-middle uk-flex-center" uk-parallax="bgy: -200">
+		<section class="uk-container uk-flex uk-text-center uk-flex-column uk-background-default">
+			<h2 class="uk-card-title uk-margin-top">{{ app.user.prenom ~ ' ' ~ app.user.nom }}</h2>
+			<div class="uk-flex  uk-flex-column ">
+			    <figure class="uk-container uk-flex uk-text-center uk-flex-column ">
+				{% if app.user.avatar is empty %} 
+				    <img class="uk-border-circle" data-src="/img/user.jpg" width="100" height="100" alt="photo de profil" uk-img> 
+				{% else %}
+					<img class="uk-border-circle" data-src="{{ app.user.avatar }}" width="100" height="100" alt="photo de profil" uk-img>	
+				{% endif %} 
+				</figure>
+				<p>
+				    <strong>Date d'inscription :</strong>
+					{{ app.user.dateEntree | date('d-m-Y') }}
+				</p>
+				<p class="uk-margin-large-bottom">
+					<strong> Mail :</strong>
+					{{ app.user.email }}
+				</p>
+				<div class="uk-flex uk-flex-column uk-flex-center uk-margin-bottom">
+					<a class="uk-button-small uk-button-default add-btn uk-text-center uk-margin-bottom" href="{{ path('user_edit', {id: app.user.id}) }}" uk-icon="icon: file-edit" title="Modifier">Modifier mes informations</a>
+					<a class="uk-button-small uk-button-default delete-btn uk-text-center" href="{{ path('user_delete', {id: user.id}) }}" uk-icon="icon: trash" title="Supprimer">Supprimer mon profil</a>
 				</div>
-                
 			</div>
-		</div>
-	</section>
+		</section>
+	</main>
 {% endblock %}

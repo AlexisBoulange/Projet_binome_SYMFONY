@@ -60,9 +60,15 @@
   margin-bottom: 20px;
 }
 
+.login-btn{
+  border-radius:25px;
+}
+
 .login-btn:hover {
   background-color: #1e87f0;
 }
+
+
 
 nav a {
   border-bottom: 3px solid white;
@@ -73,6 +79,9 @@ nav a:hover {
   border-bottom: 3px solid #1e87f0;
 }
 
+.fa-cogs{
+  font-size: 28px;
+}
 
 /*-------------------------------------------------------------
 --------------------------ADD-FLASH------------------------------
