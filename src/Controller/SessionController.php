@@ -129,7 +129,6 @@ class SessionController extends AbstractController
 
             
             $duree = $form->get('programmers')->getData();
-            dd($duree);
 
             //On vérifie que la durée cumulée des modules ne dépasse pas le nb de jours de la session
             if ($nbJours < $duree){
@@ -152,6 +151,39 @@ class SessionController extends AbstractController
             'editMode' => $session->getId() !==null
         ]);
 
+    }
+
+    /**
+     * @Route("/addStagiaireToSession/{id}", name="add_stagiaire_session")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function addStagiaireToSession(Request $request, Session $session, EntityManagerInterface $entityManager){
+
+        $id = $session->getId();
+
+        $form = $this->createForm('App\Form\StagiaireSessionType', $session);
+
+        $form->handleRequest($request);
+        if($session->getNbPlaces() < count($form->get('stagiaire')->getData())){
+            $this->addFlash('warningStagiaires', 'Vous ne pouvez pas inscrire plus de '. $session->getNbPlaces(). ' stagiaires pour cette session');
+        
+        }else{    
+            if ($form->isSubmitted() && $form->isValid()) {
+
+                // $session = $form->getData();
+
+                // $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($session);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('session_show', ['id' => $id]);
+            }
+        }
+
+        return $this->render('programmer/addStagiaireToSession.html.twig', [
+            'form' => $form->createView(),
+            'session' => $session
+        ]);
     }
 
     /**

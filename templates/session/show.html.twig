@@ -38,12 +38,12 @@
 					<div class="">
 					<h4 class="uk-margin-large-left">Liste des stagiaires :</h4>
 					<p>
-						{% for stagiaire in session.stagiaire |sort((a, b) => a.modules.libelle <=> b.modules.libelle) %}
+						{% for stagiaire in session.stagiaire |sort((a, b) => a.nom <=> b.nom) %}
 							<a href="{{ path('stagiaire_show', {id: stagiaire.id}) }}" class="uk-margin-large-left">{{ stagiaire.prenom ~ ' ' ~ stagiaire.nom  }}</a><br>
 						{% endfor %}
 					</p> 
 					{% if is_granted("ROLE_ADMIN") %}
-                        <a class=" uk-margin-large-left uk-button uk-button-default add-btn" href="{{ path('add_duree', {id: session.id}) }}">
+                        <a class=" uk-margin-large-left uk-button uk-button-default add-btn" href="{{ path('add_stagiaire_session', {id: session.id}) }}">
                             + Ajouter
                         </a>
                     {% endif %}
