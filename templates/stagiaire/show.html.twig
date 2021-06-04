@@ -4,8 +4,13 @@
 {% endblock %}
 
 {% block contenu %}
-	<section class="uk-card">
-		<div class="uk-background-top-left uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-middle uk-flex-center"  uk-parallax="bgy: -200">
+	<section class="uk-card">		   	
+		<div class="uk-background-top-left uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-middle uk-flex-column uk-flex-center"  uk-parallax="bgy: -200">
+            <div class="uk-width-1-1 uk-container">
+			    <a href="{{ path('stagiaire_index')}}" class="back-btn-alt uk-button uk-button-default uk-margin-large-bottom">
+		            <span uk-icon="arrow-left"></span> RETOUR
+		        </a>
+			</div>
 			<div class="uk-container uk-background-default">
 				<h1 style="font-family: 'Nunito', sans-serif;" class="uk-card-title uk-margin-top">Fiche stagiaire</h1>
 				<h2 style="font-family: 'Nunito', sans-serif; font-weight: 700;">{{ stagiaire.prenom ~ ' ' ~ stagiaire.nom }}</h2>

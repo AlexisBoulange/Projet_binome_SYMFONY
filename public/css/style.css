@@ -135,6 +135,13 @@ h2,
   border-radius: 24px;
 }
 
+.back-btn-alt {
+  font-weight: 700;
+  background-color: #1e87f0;
+  color:#fafafa;
+  border-radius: 24px;
+}
+
 .add-btn{
     background-color: #1e87f0;
     color:#fafafa;

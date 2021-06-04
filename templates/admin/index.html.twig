@@ -1,15 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Panneau de contrôlele{% endblock %}
+{% block title %}Panneau de contrôle
+{% endblock %}
 
 {% block contenu %}
-<main class="uk-flex uk-flex-row">
-  <aside class="uk-background-primary uk-panel-scrollable">
-     <ul>
-       <li><a href=""></a></li>
-       <li><a href=""></a></li>
-       <li><a href=""></a></li>
-     </ul>
-  </aside>
-</main>
+	<main class="uk-flex uk-flex-row uk-background-cover">
+		<aside class="uk-height-1-1 uk-width-1-4 uk-background-default uk-flex uk-flex-column uk-text-center">
+			<figure class="uk-container uk-flex uk-text-center uk-flex-column uk-margin-large-top">
+				{% if app.user.avatar is empty %}
+					<img class="uk-border-circle" data-src="/img/user.jpg" width="100" height="100" alt="photo de profil" uk-img>
+				{% else %}
+					<img class="uk-border-circle" data-src="{{ app.user.avatar }}" width="100" height="100" alt="photo de profil" uk-img>
+				{% endif %}
+			</figure>
+			<h2 class="uk-card-title uk-margin-top">{{ app.user.prenom ~ ' ' ~ app.user.nom }}</h2>
+			<div class="uk-margin-left uk-text-left">
+				<ul class="uk-list">
+					<li>
+						<a href="{{ path('user_index') }}">
+							<i class="far fa-user-alt"></i>
+						</a>
+					</li>
+					<li>
+						<a href="">
+              <i class="far fa-calendar-alt"></i>
+            </a>
+					</li>
+					<li>
+						<a href="">
+               <i class="far fa-calendar-alt"></i>
+            </a>
+					</li >
+				</ul>
+			</div>
+		</aside>
+    <section class="uk-overflow-auto">
+      <div class="uk-card">
+      </div>
+      <div></div>
+      <div></div>
+    
+    </section>
+	</main>
 {% endblock %}
