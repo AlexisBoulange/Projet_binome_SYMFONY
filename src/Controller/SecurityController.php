@@ -3,16 +3,20 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\PasswordUpdate;
 use App\Form\ChangePasswordType;
+use App\Form\PasswordUpdateType;
 use Symfony\Component\Mime\Email;
 use App\Repository\UserRepository;
 use App\Form\ForgottenPasswordType;
+use Symfony\Component\Form\FormError;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -139,5 +143,48 @@ class SecurityController extends AbstractController
             'title' => "Réinitialisation du mot de passe"
         ]);
         
+    }
+
+    /**
+     * modifier le mdp
+     * 
+     * @IsGranted("ROLE_USER")
+     * 
+     * @Route("/passwordUpdate", name="update_password")
+     */
+    public function update_user_password(EntityManagerInterface $manager, Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    {
+        // Dans Symfony le $this->getUser permet de récupèrer le user connecté
+        $user = $this->getUser();
+        $id = $this->getUser()->getId();
+
+        $passwordUpdate = new PasswordUpdate;
+
+        $form = $this->createForm(PasswordUpdateType::class, $passwordUpdate);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // on va vérifier que l'ancien mdp du formulaire correspond bien à celui de l'utilisateur
+            if (!password_verify($passwordUpdate->getOldPassword(), $user->getPassword())) {
+                // message d'erreur
+                $form->get('old_password')->addError(new FormError("Le mot de passe n'est pas bon."));
+            } else {
+                $newPassword = $passwordUpdate->getNewPassword();
+                $password = $passwordEncoder->encodePassword($user, $newPassword);
+
+                $user->setPassword($password);
+
+                $manager->persist($user);
+                $manager->flush();
+                // message add flash de confirmation
+                $this->addFlash('success', 'Le mot de passe a bien été changé.');
+                return $this->redirectToRoute('user_show', ['id' => $id]);
+            }
+        }
+
+        return $this->render('security/updatePassword.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 }

@@ -28,7 +28,7 @@
 					{% if stagiaire.sessions | length == 0 %}
 						<p class="uk-label uk-label-warning">Ce stagiaire n'est inscrit dans aucune session.</p>
 					{% else %}
-						{% for session in stagiaire.sessions %}
+						{% for session in stagiaire.sessions|sort((a, b) => a.dateD <=> b.dateD) %}
 							<p>
 								<a href="{{ path('session_show', {id: session.id}) }}">{{ session.formation}}
 									:</a>

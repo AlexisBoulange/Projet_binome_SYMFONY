@@ -9,19 +9,22 @@
 			<section class="uk-container uk-background-default">
 				<h1 class="uk-card-title uk-margin-top">Détails session</h1>
 				<h2>{{ session.formation }}</h2>
-				<div class="uk-column-1-2">
-					<p>Date de Début:
+				<div class="uk-column-1-3 uk-grid">
+				<div class="">
+					<p>Date de début :
 						<strong>{{ session.dateD | date('d-m-Y') }}</strong>
 					</p>
-					<p>Date de fin:
+					<p>Date de fin :
 						<strong>{{ session.dateF | date('d-m-Y')}}</strong>
 					</p>
-					<p class="uk-margin-xlarge-bottom">Nombre de places disponibles:
+					<p class="uk-margin-xlarge-bottom">Nombre de places disponibles :
 						<strong>{{ session.nbPlaces - session.stagiaire | length}}</strong>
 					</p>
-					<h4 class="uk-margin-large-left">Liste des modules:</h4>       
+				</div>
+				<div class="">
+					<h4 class="uk-margin-large-left">Liste des modules :</h4>       
 					<p>
-						{% for programmer in session.programmers %}
+						{% for programmer in session.programmers |sort((a, b) => a.modules.libelle <=> b.modules.libelle) %}
 							<a href="{{ path('module_show', {id: programmer.modules.id}) }}" class="uk-margin-large-left">{{ programmer.modules.libelle }} :</a>
 							{{ programmer.duree }} jours.<br>
 						{% endfor %}
@@ -31,6 +34,20 @@
                             + Ajouter
                         </a>
                     {% endif %}
+					</div>
+					<div class="">
+					<h4 class="uk-margin-large-left">Liste des stagiaires :</h4>
+					<p>
+						{% for stagiaire in session.stagiaire |sort((a, b) => a.modules.libelle <=> b.modules.libelle) %}
+							<a href="{{ path('stagiaire_show', {id: stagiaire.id}) }}" class="uk-margin-large-left">{{ stagiaire.prenom ~ ' ' ~ stagiaire.nom  }}</a><br>
+						{% endfor %}
+					</p> 
+					{% if is_granted("ROLE_ADMIN") %}
+                        <a class=" uk-margin-large-left uk-button uk-button-default add-btn" href="{{ path('add_duree', {id: session.id}) }}">
+                            + Ajouter
+                        </a>
+                    {% endif %}
+					</div>
 				</div>
 			</section>
 		</div>

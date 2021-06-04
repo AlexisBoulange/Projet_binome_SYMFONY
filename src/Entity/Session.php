@@ -165,6 +165,6 @@ class Session
 
     public function __toString()
     {
-        return $this->getFormation()->getNom();
+        return $this->getFormation()->getNom() ." du ". $this->getDateD()->format('d/m/Y')." au ".$this->getDateF()->format('d/m/Y');
     }
 }

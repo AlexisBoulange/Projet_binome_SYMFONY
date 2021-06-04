@@ -7,7 +7,7 @@
 {% block contenu %}
 	<main class="uk-background-top-left uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-middle uk-flex-center" uk-parallax="bgy: -200">
 		<section class="uk-container uk-flex uk-text-center uk-flex-column uk-background-default">
-			<h2 class="uk-card-title uk-margin-top">{{ app.user.prenom ~ ' ' ~ app.user.nom }}</h2>
+			<h2 class="uk-card-title uk-margin-top">{{ app.user.pseudo }}</h2>
 			<div class="uk-flex  uk-flex-column ">
 			    <figure class="uk-container uk-flex uk-text-center uk-flex-column ">
 				{% if app.user.avatar is empty %} 
@@ -16,6 +16,10 @@
 					<img class="uk-border-circle" data-src="{{ app.user.avatar }}" width="100" height="100" alt="photo de profil" uk-img>	
 				{% endif %} 
 				</figure>
+				<p>
+				    <strong>Prénom et nom :</strong>
+					{{ app.user.prenom ~ ' ' ~ app.user.nom }}
+				</p>
 				<p>
 				    <strong>Date d'inscription :</strong>
 					{{ app.user.dateEntree | date('d-m-Y') }}

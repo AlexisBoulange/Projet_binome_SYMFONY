@@ -54,7 +54,7 @@ class SessionController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            //On récupère nos date de début et de fin
+            //On récupère nos dates de début et de fin
             $dateD = $form->get('dateD')->getData();
             $dateF = $form->get('dateF')->getData();
             
@@ -104,9 +104,9 @@ class SessionController extends AbstractController
         $entityManager->flush();
 
        //message add flash de confirmation
-       $this->addFlash('success', 'La session a bien été supprimée!');
+        $this->addFlash('success', 'La session a bien été supprimée!');
 
-       return $this->redirectToRoute('session_index');
+        return $this->redirectToRoute('session_index');
     }
 
     /**
@@ -116,19 +116,34 @@ class SessionController extends AbstractController
     public function addModuleToSession(Request $request, Session $session, EntityManagerInterface $entityManager){
 
         $id = $session->getId();
+        //On récupère nos dates de début et de fin
+        $dateD = $session->getDateD();
+        $dateF = $session->getDateF();
+        //On calcule la durée entre les deux dates
+        $nbJours = date_diff($dateD, $dateF);
 
         $form = $this->createForm('App\Form\AteliersType', $session);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // $session = $form->getData();
+            
+            $duree = $form->get('programmers')->getData();
+            dd($duree);
 
-            // $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($session);
-            $entityManager->flush();
+            //On vérifie que la durée cumulée des modules ne dépasse pas le nb de jours de la session
+            if ($nbJours < $duree){
+                $this->addFlash('warning', 'La durée des modules dépasse celle de la session!');
+            }else{
+            
+                // $session = $form->getData();
 
-            return $this->redirectToRoute('session_show', ['id' => $id]);
+                // $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($session);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('session_show', ['id' => $id]);
+            }
         }
 
         return $this->render('programmer/addDuree.html.twig', [
