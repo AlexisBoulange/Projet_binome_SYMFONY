@@ -4,13 +4,14 @@
 
 {% block contenu %}
 <section class="uk-container uk-margin-large-top uk-margin-large-bottom">
-      {{ form_start(formEditUser) }}
-			{{ form_row(formEditUser.pseudo) }}
-			{{ form_row(formEditUser.email) }}
-			{{ form_row(formEditUser.nom) }}     
-			{{ form_row(formEditUser.prenom) }}
-            {{ form_row(formEditUser.plainPassword) }}
-			{{ form_row(formEditUser.envoyer) }}
-		{{ form_end(formEditUser) }}
+    {{ form_start(formEditUser) }}
+		{{ form_row(formEditUser.pseudo) }}
+		{{ form_row(formEditUser.email) }}
+		{{ form_row(formEditUser.nom) }}     
+		{{ form_row(formEditUser.prenom) }}
+		<div class="uk-divider"></div>
+			<a class="add_collection_link" href="{{ path('update_password') }}" title="Modifier le mdp">Modifier le mdp</a>
+		{{ form_row(formEditUser.envoyer) }}
+	{{ form_end(formEditUser) }}
 </section>
 {% endblock %}

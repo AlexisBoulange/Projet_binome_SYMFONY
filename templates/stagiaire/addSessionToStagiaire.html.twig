@@ -18,8 +18,7 @@
          <ul id="sessions" data-prototype="{{ form_row(form.sessions.vars.prototype)|e }}">
             {% for session in form.sessions %}
                <li class="session">
-               {{ form_row(session) }}
-               {# {{ form_row(session.id) }} #}
+                  {{ form_row(session) }}
                </li>
             {% endfor %}
          </ul>

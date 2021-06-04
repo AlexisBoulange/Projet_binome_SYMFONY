@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Session;
 use App\Entity\Stagiaire;
 use App\Form\StagiaireType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -62,7 +61,7 @@ class StagiaireController extends AbstractController
             'editMode' => $stagiaire->getId() !==null
         ]);
     }
-   /**
+    /**
      * @Route("/confirm/{id}", name="stagiaire_confirmation")
      * @IsGranted("ROLE_ADMIN")
     */
@@ -83,9 +82,9 @@ class StagiaireController extends AbstractController
         $entityManager->flush();
 
        //message add flash de confirmation
-       $this->addFlash('success', 'Le stagiaire a bien été supprimé!');
+        $this->addFlash('success', 'Le stagiaire a bien été supprimé!');
 
-       return $this->redirectToRoute('stagiaire_index');
+        return $this->redirectToRoute('stagiaire_index');
     }
         /**
      * @Route("/addSessionToStagiaire/{id}", name="add_session_stagiaire")

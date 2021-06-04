@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -37,14 +36,9 @@ class UserController extends AbstractController
     /**
      * @Route("/edit/{id}", name="user_edit")
      */
-    public function edit(Request $request, UserPasswordEncoderInterface $passwordEncoder, UserInterface $userConnected): Response
+    public function edit(Request $request, User $userConnected): Response
     {
-        // dd($request->attributes->get('id'));
-        // dd($userConnected->getId());
-        if($userConnected->getId() != $request->attributes->get('id')){
-            // ERROR et redirection
-            return $this->redirectToRoute('home');
-        }
+        $id = $userConnected->getId();
 
         $form = $this->createForm(UserType::class, $userConnected);
 
@@ -52,25 +46,20 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
         
             $user = $form->getData();
-            $user->setPassword(
-                $passwordEncoder->encodePassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_logout');
+            return $this->redirectToRoute('user_show', ['id' => $id]);
         }
 
         return $this->render('user/edit.html.twig', [
             'formEditUser' => $form->createView(),
+            'id' => $id
         ]);
     }
-  /**
+    /**
      * @Route("/confirm/{id}", name="user_confirmation")
      * @IsGranted("ROLE_ADMIN")
     */
@@ -90,9 +79,9 @@ class UserController extends AbstractController
         $entityManager->flush();
 
        //message add flash de confirmation
-       $this->addFlash('success', 'Un utilisateur a bien été supprimé!');
+        $this->addFlash('success', 'Un utilisateur a bien été supprimé!');
 
-       return $this->redirectToRoute('user_index');
+        return $this->redirectToRoute('user_index');
     }
     /**
      * @Route("/{id}", name="user_show")

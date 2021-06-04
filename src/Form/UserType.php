@@ -19,36 +19,10 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('email', EmailType::class, [
-            'label' => 'Email',
-            'required' => true,
-            'attr' => ['class' => 'uk-input'],
-        ])
-            ->add('plainPassword', RepeatedType::class, [
-                'type' => PasswordType::class,
-                'first_options' => [
-                    'label' => 'Mot de passe',
-                    'attr' => ['class' => 'uk-input'],
-                ],
-                'second_options' => [
-                    'label' => 'Répétez le mot de passe',
-                    'attr' => ['class' => 'uk-input'],
-                ],
-                'invalid_message' => 'Les mots de passe ne corespondent pas',
-                'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter a password',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 15,
-                        'minMessage' => 'Votre mot de passe doit comporter moins de {{ limit }} caractères',
-                    ]),
-                ],
+            ->add('email', EmailType::class, [
+                'label' => 'Email',
+                'required' => true,
+                'attr' => ['class' => 'uk-input'],
             ])
             ->add('nom', TextType::class, [
                 'label' => 'Nom',
