@@ -12,10 +12,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/formation")
+ * @IsGranted("ROLE_USER")
  */
 class FormationController extends AbstractController
 {
-        /**
+    /**
      * @Route("/", name="formation_index")
      */
     public function index(): Response
