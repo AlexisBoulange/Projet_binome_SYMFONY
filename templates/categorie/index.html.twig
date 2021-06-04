@@ -17,7 +17,7 @@
         </thead>
             {% for categorie in categories %}
                <tr> 
-                  <td><strong>{{ categorie.nom }}</strong></td>
+                  <td><a href="{{ path('categorie_show', {id: categorie.id}) }}">{{ categorie.nom }}</a></td>
                   <td>{{ categorie.detail }}</td>
                   {% if is_granted("ROLE_ADMIN") %}
                         <td>

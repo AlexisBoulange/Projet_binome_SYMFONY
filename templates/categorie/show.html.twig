@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégories
+{% endblock %}
+
+{% block contenu %}
+	<main class="uk-container uk-margin-large-top">
+		<a href="{{ path('categorie_index')}}" class="back-btn uk-button uk-button-default">
+		    <span uk-icon="arrow-left"></span> RETOUR
+		</a>
+		<section class="uk-container uk-flex uk-margin-large-top uk-margin-large-bottom">
+			<article class="uk-article uk-margin-left">
+				<h1 class="uk-article-title" style="font-family: 'Nunito', sans-serif; font-weight: 700;">{{ categorie.nom}}</h1>
+				<p class="uk-text-lead">{{categorie.detail}}</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</article>
+		</section>
+		<h3 class="uk-margin-large-left">Liste des modules appartenant à cette catégorie :</h4>       
+					<p>
+						{% for modules in categorie.modules |sort((a, b) => a.libelle <=> b.libelle) %}
+							<a href="{{ path('module_show', {id: modules.id}) }}" class="uk-margin-large-left">
+								{{ modules.libelle }}
+							</a><br>
+						{% endfor %}
+					</p> 
+	</main>
+{% endblock %}

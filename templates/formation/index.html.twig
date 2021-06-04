@@ -25,7 +25,7 @@
 			{% for formation in formations %}
 				<tr>
 					<td>
-						<a href="{{ path('formation_show', {id: formation.id}) }}["><strong>{{ formation.nom }}</strong></a>
+						<a href="{{ path('formation_show', {id: formation.id}) }}">{{ formation.nom }}</a>
 					</td>
 					<td>{{ formation.descriptif }}</td>
 					<td>
