@@ -11,7 +11,7 @@ class PasswordUpdate
     /**
      * @Assert\Length(min=8, minMessage="Votre mot de passe doit faire au moins 8 caractères")
      * @Assert\Regex(
-     * pattern = "/^(?=.*\d)(?=.*[A-Z])(?=.*[@#$%-])(?!.*(.)\1{2}).*[a-z]/m",
+     * pattern = "/^(?=.*\d)(?=.*[A-Z])(?=.*[@#$%-+])(?!.*(.)\1{2}).*[a-z]/m",
      * match=true,
      * message="Votre mot de passe doit comporter au moins huit caractères, dont des lettres majuscules et minuscules, un chiffre et un symbole.")
      */

@@ -21,7 +21,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/", name="user_index")
+     * @Route("/admin", name="admin")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function index(): Response
     {
@@ -29,7 +30,7 @@ class UserController extends AbstractController
             ->getRepository(User::class)
             ->findBy([], ['nom' => 'ASC']);
 
-        return $this->render('user/index.html.twig', [
+        return $this->render('admin/index.html.twig', [
             'users' => $users
         ]);
     }

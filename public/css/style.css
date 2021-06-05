@@ -1,44 +1,70 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-.alert-warning{
-    color: crimson;
-    font-size: large;
+
+.alert-warning {
+  color: crimson;
+  font-size: large;
 }
-#gestionDurees, #stagiaires, #sessions{
-  list-style:none;
+
+.uk-icon-button{
+  color: #fafafa;
+  background-color:#1e87f0
+}
+
+.uk-icon-button:hover{
+  color:#1e87f0
+}
+
+
+#gestionDurees,
+#stagiaires,
+#sessions {
+  list-style: none;
   padding: 0;
 }
-.add_collection_link{
-    background-color: #1e87f0;
-    color:#fafafa;
-    border-radius: 24px;
-    padding: 12px;
-    border: none;
-    margin-top: 5px;
-    text-decoration: none;
+
+.radius {
+  border-radius: 22px;
 }
-.add_collection_link:hover{
+
+.scroll{
+  overflow-y: scroll;
+}
+
+.add_collection_link {
+  background-color: #1e87f0;
+  color: #fafafa;
+  border-radius: 24px;
+  padding: 12px;
+  border: none;
+  margin-top: 5px;
+  text-decoration: none;
+}
+
+.add_collection_link:hover {
   background-color: #fafafa;
   color: #1e87f0;
   padding: 11px;
-  border: 1px solid #1e87f0 ;
+  border: 1px solid #1e87f0;
   cursor: pointer;
 }
-.del_collection_link{
+
+.del_collection_link {
   background-color: red;
-  color:#fafafa;
+  color: #fafafa;
   border-radius: 24px;
   padding: 12px;
   border: none;
   text-decoration: none;
   margin: 10px 0 20px 0;
 }
-.del_collection_link:hover{
+
+.del_collection_link:hover {
   background-color: #fafafa;
   color: red;
   padding: 11px;
-  border: 1px solid red ;
+  border: 1px solid red;
   cursor: pointer;
 }
 
@@ -60,15 +86,13 @@
   margin-bottom: 20px;
 }
 
-.login-btn{
-  border-radius:25px;
+.login-btn {
+  border-radius: 25px;
 }
 
 .login-btn:hover {
   background-color: #1e87f0;
 }
-
-
 
 nav a {
   border-bottom: 3px solid white;
@@ -79,7 +103,7 @@ nav a:hover {
   border-bottom: 3px solid #1e87f0;
 }
 
-.fa-cogs{
+.fa-cogs {
   font-size: 28px;
 }
 
@@ -87,23 +111,20 @@ nav a:hover {
 --------------------------ADD-FLASH------------------------------
 -------------------------------------------------------------*/
 
-
-.alert-warning{
-    color: crimson;
-    font-size: large;
+.alert-warning {
+  color: crimson;
+  font-size: large;
 }
 
-.alert-success{
+.alert-success {
   color: #1e87f0;
   font-size: 1.2em;
   font-weight: 700;
 }
 
-
 /*-------------------------------------------------------------
 --------------------------TITLES/BUTTONS------------------------------
 -------------------------------------------------------------*/
-
 
 .uk-heading-large,
 .uk-heading-small,
@@ -138,26 +159,26 @@ h2,
 .back-btn-alt {
   font-weight: 700;
   background-color: #1e87f0;
-  color:#fafafa;
+  color: #fafafa;
   border-radius: 24px;
 }
 
-.add-btn{
-    background-color: #1e87f0;
-    color:#fafafa;
-    border-radius: 24px;
+.add-btn {
+  background-color: #1e87f0;
+  color: #fafafa;
+  border-radius: 24px;
 }
 
-.delete-btn{
-    background-color: red;
-    color:#fafafa;
-    border-radius: 24px;
+.delete-btn {
+  background-color: red;
+  color: #fafafa;
+  border-radius: 24px;
 }
 
-.calendar-btn{
-    background-color: #1a1a1b;
-    color:#fafafa;
-    border-radius: 24px;
+.calendar-btn {
+  background-color: #1a1a1b;
+  color: #fafafa;
+  border-radius: 24px;
 }
 
 /*-------------------------------------------------------------
@@ -171,9 +192,7 @@ h2,
 
 .uk-background-default {
   background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 22px;
 }
-
 
 /*-------------------------------------------------------------
 --------------------------FOOTER------------------------------

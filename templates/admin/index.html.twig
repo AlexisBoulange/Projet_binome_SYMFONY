@@ -1,45 +1,80 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Panneau de contrôle
-{% endblock %}
+{% block title %} Panneau de contrôle {% endblock %}
 
 {% block contenu %}
-	<main class="uk-flex uk-flex-row uk-background-cover">
-		<aside class="uk-height-1-1 uk-width-1-4 uk-background-default uk-flex uk-flex-column uk-text-center">
+	<main class="uk-flex uk-card uk-flex-row uk-background-cover uk-overflow-hidden">
+		<aside class="uk-width-1-5 uk-background-default uk-flex uk-flex-column uk-text-center">
 			<figure class="uk-container uk-flex uk-text-center uk-flex-column uk-margin-large-top">
 				{% if app.user.avatar is empty %}
 					<img class="uk-border-circle" data-src="/img/user.jpg" width="100" height="100" alt="photo de profil" uk-img>
-				{% else %}
+				    {% else %}
 					<img class="uk-border-circle" data-src="{{ app.user.avatar }}" width="100" height="100" alt="photo de profil" uk-img>
 				{% endif %}
 			</figure>
 			<h2 class="uk-card-title uk-margin-top">{{ app.user.prenom ~ ' ' ~ app.user.nom }}</h2>
+			<p class="uk-label uk-label-success">admin</p>
 			<div class="uk-margin-left uk-text-left">
-				<ul class="uk-list">
+				<ul class="uk-list uk-margin-top">
 					<li>
-						<a href="{{ path('user_index') }}">
-							<i class="far fa-user-alt"></i>
-						</a>
+						<a href="#users" class="uk-icon-button" uk-icon="icon: user"></a> Utilisateurs
 					</li>
 					<li>
-						<a href="">
-              <i class="far fa-calendar-alt"></i>
-            </a>
+						<a href="{{ path('session_calendar') }}" class="uk-icon-button" uk-icon="icon: calendar"></a> Planning
 					</li>
-					<li>
-						<a href="">
-               <i class="far fa-calendar-alt"></i>
-            </a>
-					</li >
 				</ul>
 			</div>
 		</aside>
-    <section class="uk-overflow-auto">
-      <div class="uk-card">
-      </div>
-      <div></div>
-      <div></div>
-    
-    </section>
-	</main>
+		<section class=" uk-width-5-1 uk-container scroll ">
+			<div class="uk-card uk-padding uk-background-default radius uk-margin-large-top uk-margin-large-right uk-margin-large-left">
+                <h2>Utilisateurs connectés: </h2>
+				    
+					<ul>														
+				       <li>{{ app.user }}</li>
+					</ul>
+			</div>	
+			<div id="#users" class="uk-card uk-padding uk-background-default radius uk-margin-large-top uk-margin-large-right uk-margin-large-left">
+				<h2>Utilisateurs inscrits:</h2>
+				<table class="uk-table uk-table-divider uk-table-responsive">
+					<thead>
+						<tr>
+							<th>Nom/Prénom</th>
+							<th>Date d'inscription</th>
+							<th>Mail</th>
+							<th>Roles</th>
+							{% if is_granted("ROLE_ADMIN") %}
+								<th>Modifier/Supprimer</th>
+							{% endif %}
+						</tr>
+					</thead>
+					<tbody>
+						{% for user in users %}
+							<tr>
+								<td>
+								    <a href="{{ path('user_show', {id: user.id}) }}">{{ user.nom ~ ' ' ~ user.prenom }}</a>
+								</td>
+								<td>
+								   {{ user.dateEntree | date('d/m/Y') }}
+								</td>
+								<td>
+								   {{ user.email }}
+								</td>
+								<td>
+									{% for role in user.roles %}
+										{{ role }}</br>
+								    {% endfor %}
+								</td>					
+						        {% if is_granted("ROLE_ADMIN") %}
+							    <td>
+								   <a class="uk-button-small uk-button-default add-btn" href="{{ path('user_edit', {id: user.id}) }}" uk-icon="icon: file-edit" title="Modifier"></a>
+								   <a class="uk-button-small uk-button-default delete-btn" href="{{ path('user_confirmation', {id: user.id}) }}" uk-icon="icon: trash" title="Supprimer"></a>
+							    </td> 
+								{% endif %}
+		                    </tr>			
+			            {% endfor %}
+		            </tbody>
+	            </table>
+			</div>
+        </section>
+    </main>
 {% endblock %}

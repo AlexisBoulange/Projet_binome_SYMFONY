@@ -5,7 +5,12 @@
 
 {% block contenu %}
 	<main class="uk-card">
-		<div class="uk-background-cover uk-background-top-left  uk-height-medium uk-panel uk-flex uk-flex-middle uk-flex-center" uk-parallax="bgy: -200">
+		<div class="uk-background-cover uk-background-top-left uk-height-medium uk-panel uk-flex uk-flex-middle uk-flex-column uk-flex-center" uk-parallax="bgy: -200">
+		    <div class="uk-width-1-1 uk-container">
+			    <a href="{{ path('stagiaire_index')}}" class="back-btn-alt uk-button uk-button-default uk-margin-large-bottom uk-margin-xlarge-left">
+		            <span uk-icon="arrow-left"></span> RETOUR
+		        </a>
+			</div>	
 			<section class="uk-container uk-background-default">
 				<h1 class="uk-card-title uk-margin-top">Détails session</h1>
 				<h2>{{ session.formation }}</h2>
