@@ -86,7 +86,7 @@ class StagiaireController extends AbstractController
 
         return $this->redirectToRoute('stagiaire_index');
     }
-        /**
+    /**
      * @Route("/addSessionToStagiaire/{id}", name="add_session_stagiaire")
      * @IsGranted("ROLE_ADMIN")
      */

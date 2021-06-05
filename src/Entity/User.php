@@ -33,7 +33,7 @@ class User implements UserInterface
      * @var string The hashed password
      * @ORM\Column(type="string")
      * @Assert\Regex(
-     * pattern = "/^(?=.*\d)(?=.*[A-Z])(?=.*[@#$%-])(?!.*(.)\1{2}).*[a-z]/m",
+     * pattern = "/^(?=.*\d)(?=.*[A-Z])(?=.*[@#$%-+])(?!.*(.)\1{2}).*[a-z]/m",
      * match=true,
      * message="Votre mot de passe doit comporter au moins huit caractères, dont des lettres majuscules et minuscules, un chiffre et un symbole.")
      */

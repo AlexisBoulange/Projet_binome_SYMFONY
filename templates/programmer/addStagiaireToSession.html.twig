@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter/modifier stagiaires
+{% endblock %}
+
+{% block contenu %}
+	<section class="uk-container uk-margin-large-top uk-margin-large-bottom">
+		<h2>Ajouter ou supprimer un stagiaire</h2>
+		{{ form_start(form) }}
+		<ul id="stagiaires" data-prototype="{{ form_row(form.stagiaire.vars.prototype)|e }}">
+		{% for message in app.flashes('warningStagiaires') %}
+			<div class="alert alert-warning">
+				{{message}}
+			</div>
+		{% endfor %}
+			{% for stagiaire in form.stagiaire %}
+				<li class="stagiaire">
+					{{ form_row(stagiaire) }}
+				</li>
+			{% endfor %}
+		</ul>
+		{{ form_row(form.envoyer) }}
+		{{ form_end(form) }}
+	</section>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="/js/collectionHandlerAddStagiaire.js"></script>
+{% endblock %}

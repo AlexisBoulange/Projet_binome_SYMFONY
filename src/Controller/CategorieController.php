@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/categorie")
+ * @IsGranted("ROLE_USER")
  */
 class CategorieController extends AbstractController
 {
